@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css?family=Francois+One');
+@import url('https://fonts.googleapis.com/css?family=PT+Mono');
+@import url('https://fonts.googleapis.com/css?family=Space+Mono');
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+
+
+.container-fluid {
+	margin: 0;
+	padding: 0;
+}
+
+.row {
+	margin: 0;
+	padding: 0;
+}
+
+#banner {
+	background-image: url("img/mac-air1.jpg");
+	background-size: cover;
+}
+
+
+#overlay1 {
+	text-align: center;
+	padding: 17% 0;
+	color: white;
+	background-color: black;
+	opacity: 0.7;
+	filter: alpha(opacity=70);
+}
+
+
+#landing-page-title {
+	font-family: Francois One;
+	font-size: 700%;
+}
+
+#vision {
+	font-family:PT Mono;
+	font-size: 200%;
+}
+
+#mission {
+	font-family: Space Mono;
+	font-size: 200%;
+}
+
+#line {
+	
+}
+
+#small-line {
+	padding: 10% 0;
+	margin: 0;
+	text-align: center;
+	font-family: Space Mono;
+	font-weight: bold;
+	font-size: 200%;
+}
+
+#description {
+	background-image: url("img/mac-air2.jpg");
+	background-size: cover;
+	margin: 0;
+}
+
+#overlay2 {
+	padding: 30% 10%;
+	margin: 0;
+	text-align: center;
+	color: white;
+	background-color: black;
+	opacity: 0.7;
+	filter: alpha(opacity=70);
+	font-family: Space Mono;
+	font-size: 200%;
+	
+}
+
+#landing-page-logins {
+	font-family: Poppins;
+	font-size: 300%;
+	text-align: center;
+	padding: 3% 0;
+	color: white;
+	background-color: black;
+	opacity: 0.6;
+	filter: alpha(opacity=60);
+}
+
+.login-type {
+	text-align: center;
+	padding: 40% 0;
+	font-family: Poppins;
+	font-size: 200%;
+	width: auto;
+}
+
+
+a:hover {
+	cursor: pointer;
+    text-decoration: none;
+
+}
+
+@media screen and (max-width: 1024px) {
+	#banner {
+		background-image: url("img/mac-air1.jpg");
+		background-size: 100%;
+		background-repeat: no-repeat;
+	}
+	
+	#overlay {
+		padding: 15% 0;
+	}	
+	
+	#mission {
+		font-size: 150%;
+	}
+}
+
+@media screen and (max-width: 761px) {
+	#banner {
+		background-image: url("img/mac-air1.jpg");
+		background-size: 100%;
+		background-repeat: no-repeat;
+	}
+	
+	#overlay {
+		padding-top: 20%;
+		padding-bottom: 12%;
+	}
+	
+	#landing-page-title {
+		font-size: 200%;
+	}
+	
+	#vision {
+		font-size: 105%;
+	}
+	
+	#mission {
+		font-size: 70%;
+	}
+	
+	#small-line {
+		font-weight: bold;
+		font-size: 110%;
+	}
+	
+	#description {
+		background-size: 100%;
+		background-repeat: no-repeat;
+	}
+
+	#overlay2 {
+		padding: 10% 10%;
+		font-size: 90%;
+	}
+	
+	#landing-page-logins {
+		font-size: 150%;
+		padding: 2%;
+	}
+	
+	.login-type {
+		padding: 20% 0;
+		font-size: 110%;
+	}
+	
+}
