@@ -18,7 +18,8 @@ nav {
 }
 
 #banner {
-	background-image: url("img/mac-air1.jpg");
+	/*background-image: url("img/mac-air1.jpg");*/
+	background-color: teal;
 	background-size: cover;
 }
 
@@ -62,7 +63,8 @@ nav {
 }
 
 #description {
-	background-image: url("img/mac-air2.jpg");
+	/*background-image: url("img/mac-air2.jpg");*/
+	background-color: purple;
 	background-size: cover;
 	margin: 0;
 }
