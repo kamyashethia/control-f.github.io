@@ -1,3 +1,5 @@
+<?php
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,36 +22,47 @@
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 	<div class="container-fluid">
-		<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="row">
+			<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="navbar-header">
-       			 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#theNav">
+       			 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#controlFNav">
           			<span class="icon-bar"></span>
           			<span class="icon-bar"></span>
           			<span class="icon-bar"></span>                        
       			</button>
+      			<a id="title" class="navbar-brand" href="index.html">Control-F</a>
     		</div>
     		<div>
-      			<div class="collapse navbar-collapse" id="theNav">
+      			<div class="collapse navbar-collapse" id="controlFNav">
        			 	<ul class="nav navbar-nav">
          			</ul>
          			<ul class="nav navbar-nav navbar-right">
-         				<li><a href="#bg1">What We Do</a></li>
-         				<li><a href="#bg3">Login/Register</a></li>
-         				<li><a href="#bg4">About Us</a></li>
+         				<li><a id="" href="">About</a></li>
+         				<li><a id="" href="">Find a developer/non-profit</a></li>         				
+         				<li><a id="" href="">Login/Register</a></li>
+         				<li><a id="" href="">Contact</a></li>
          			</ul>
       			</div>
     		</div>
-    	</nav>
+    		</nav>
+		</div>
+
+	<!-- Comments:
+	Put some nav bar on top. 
+	swap #banner and #line.  DONE
+	multiple entry points for devs/non-profits to look up people really quickly
+	 -->
 		<div class="row"  id="banner">
 			<div class="col-sm-12" id="overlay1">
 				<div id="landing-page-title">Control-F</div>
-				<span id="vision">Digitizing every aspect of our lives.</span>
+				<p id="vision">Need technical services? Or do you need technical experience?</p>
 				<div id="mission">Our mission is to provide technical services for small business owners and nonprofits in need.</div>
 			</div>
 		</div>
 		<div class="row" id="line">
 			<div class="col-sm-12" id="small-line">
-				<p>Need technical services? Or do you need technical experience?</p>
+				
+				<span>Digitizing every aspect of our lives.</span>
 			</div>
 		</div>
 		<div class="row" id="description">
@@ -70,5 +83,7 @@
 		</div>
 	</div>
 </body>
+
+
 
 </html>

@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Francois+One');
-@import url('https://fonts.googleapis.com/css?family=PT+Mono');
-@import url('https://fonts.googleapis.com/css?family=Space+Mono');
-@import url('https://fonts.googleapis.com/css?family=Poppins');
+@import url('https://fonts.googleapis.com/css?family=Francois+One|PT+Mono|Space+Mono|Poppins');
+
 
 
 
@@ -15,8 +13,13 @@
 	padding: 0;
 }
 
+nav {
+	padding: 1% 5%;
+}
+
 #banner {
-	background-image: url("img/mac-air1.jpg");
+	/*background-image: url("img/mac-air1.jpg");*/
+	background-color: teal;
 	background-size: cover;
 }
 
@@ -60,7 +63,8 @@
 }
 
 #description {
-	background-image: url("img/mac-air2.jpg");
+	/*background-image: url("img/mac-air2.jpg");*/
+	background-color: purple;
 	background-size: cover;
 	margin: 0;
 }
