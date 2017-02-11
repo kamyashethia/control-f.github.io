@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Francois+One');
-@import url('https://fonts.googleapis.com/css?family=PT+Mono');
-@import url('https://fonts.googleapis.com/css?family=Space+Mono');
-@import url('https://fonts.googleapis.com/css?family=Poppins');
+@import url('https://fonts.googleapis.com/css?family=Francois+One|PT+Mono|Space+Mono|Poppins');
+
 
 
 
@@ -13,6 +11,10 @@
 .row {
 	margin: 0;
 	padding: 0;
+}
+
+nav {
+	padding: 1% 5%;
 }
 
 #banner {
