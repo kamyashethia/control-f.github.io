@@ -1,36 +1,42 @@
 @import url('https://fonts.googleapis.com/css?family=Francois+One|PT+Mono|Space+Mono|Poppins');
 
-
-
-
-.container-fluid {
-	margin: 0;
-	padding: 0;
+ body {
+	height: 100%;
+	width: 100%;
 }
+
+
 
 .row {
 	margin: 0;
 	padding: 0;
 }
 
-nav {
-	padding: 1% 5%;
+.navbar-default {
+	padding: 0.5% 5%;
+	background: #47FF9D; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2)); /* Standard syntax */
+    color: black;
+    font-family: Space Mono;
+    font-weight: bold;
+    font-size: 110%;
 }
 
 #banner {
-	/*background-image: url("img/mac-air1.jpg");*/
-	background-color: teal;
-	background-size: cover;
+	background-image: url("img/icon-title.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	padding: 15%;
+	margin-top: 6%;
 }
 
 
 #overlay1 {
 	text-align: center;
-	padding: 17% 0;
-	color: white;
-	background-color: black;
-	opacity: 0.7;
-	filter: alpha(opacity=70);
+	position: 0;
 }
 
 
@@ -39,67 +45,34 @@ nav {
 	font-size: 700%;
 }
 
-#vision {
-	font-family:PT Mono;
-	font-size: 200%;
+#title {
+	margin-bottom: 5%;
 }
 
-#mission {
-	font-family: Space Mono;
-	font-size: 200%;
-}
-
-#line {
-	
+#overlay1 span {
+	font-family: PT Mono;
+	font-size: 150%;
 }
 
 #small-line {
-	padding: 10% 0;
-	margin: 0;
 	text-align: center;
 	font-family: Space Mono;
 	font-weight: bold;
 	font-size: 200%;
-}
-
-#description {
-	/*background-image: url("img/mac-air2.jpg");*/
-	background-color: purple;
-	background-size: cover;
-	margin: 0;
-}
-
-#overlay2 {
-	padding: 30% 10%;
-	margin: 0;
-	text-align: center;
-	color: white;
-	background-color: black;
-	opacity: 0.7;
-	filter: alpha(opacity=70);
-	font-family: Space Mono;
-	font-size: 200%;
 	
 }
 
-#landing-page-logins {
-	font-family: Poppins;
-	font-size: 300%;
+
+
+#overlay2 {
+	margin: 5% 0;
 	text-align: center;
-	padding: 3% 0;
-	color: white;
-	background-color: black;
-	opacity: 0.6;
-	filter: alpha(opacity=60);
+	padding: 0 5% 5%;
+	font-family: Space Mono;
+	font-size: 150%;
+	
 }
 
-.login-type {
-	text-align: center;
-	padding: 40% 0;
-	font-family: Poppins;
-	font-size: 200%;
-	width: auto;
-}
 
 
 a:hover {
@@ -108,69 +81,78 @@ a:hover {
 
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1196px) {
+
 	#banner {
-		background-image: url("img/mac-air1.jpg");
-		background-size: 100%;
-		background-repeat: no-repeat;
+		padding: 18%;
+		margin-top: 6%;
 	}
+
+}
+
+@media screen and (max-width: 1065px) {
 	
-	#overlay {
-		padding: 15% 0;
-	}	
-	
-	#mission {
-		font-size: 150%;
+
+	#banner {
+		padding: 21%;
+		margin-top: 8%;
 	}
+
+}
+
+@media screen and (max-width: 880px) {
+	
+
+	#banner {
+		padding: 25%;
+		margin-top: 10%;
+	}
+
 }
 
 @media screen and (max-width: 761px) {
+	
+	body {
+		background: #47FF9D; /* For browsers that do not support gradients */
+    	background: -webkit-linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2); /* For Safari 5.1 to 6.0 */
+    	background: -o-linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2)); /* For Opera 11.1 to 12.0 */
+    	background: -moz-linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2)); /* For Firefox 3.6 to 15 */
+    	background: linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2)); /* Standard syntax */
+    	
+	}
+	.navbar-default {
+		padding: 0.5% 5%;
+		background: #F8F8F8;
+	}
+
 	#banner {
-		background-image: url("img/mac-air1.jpg");
-		background-size: 100%;
+		background-image: url("img/IconWhite.png");
 		background-repeat: no-repeat;
+		background-size: 40%;
+		padding: 15%;
+		margin-top: 20%;
 	}
-	
-	#overlay {
-		padding-top: 20%;
-		padding-bottom: 12%;
-	}
-	
+
 	#landing-page-title {
-		font-size: 200%;
+		font-size: 400%;
 	}
 	
-	#vision {
-		font-size: 105%;
+	#title {
+		margin-bottom: 5%;
 	}
-	
-	#mission {
-		font-size: 70%;
+
+	#overlay1 span {
+		font-size: 130%;
 	}
-	
+
 	#small-line {
-		font-weight: bold;
-		font-size: 110%;
-	}
-	
-	#description {
-		background-size: 100%;
-		background-repeat: no-repeat;
+		font-size: 150%;
 	}
 
 	#overlay2 {
-		padding: 10% 10%;
-		font-size: 90%;
+		margin: 5% 0;
+		padding: 0 5% 5%;
+		font-size: 120%;
 	}
-	
-	#landing-page-logins {
-		font-size: 150%;
-		padding: 2%;
-	}
-	
-	.login-type {
-		padding: 20% 0;
-		font-size: 110%;
-	}
-	
+
 }
