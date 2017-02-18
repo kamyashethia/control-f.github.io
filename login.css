@@ -1,28 +1,60 @@
-#box {
 
-    background: #47FF9D; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2)); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2)); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2)); /* Standard syntax */
-
-    padding-top:20px;
-    padding-left:20px;
-    padding-right:20px;
-    padding-bottom:20px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
+/* this is css that separates the two halves*/
+html, body, section, div {
+  height: 100%;
 
 }
 
 
-#logo {
-    padding-bottom: 10px;
+
+body {
+
+  text-align: center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
+section {
+  width: 100%;
+}
+
+article {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  padding: 1rem;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+h1 {
+  font-size: 1.5rem;
+  padding-top: 4px;
+  color:#5A5857;
+}
+
+h2 {
+  font-size: 2.5rem;
+  color: #5A5857;
+}
+
+/*this is the css for the two halves*/
+.left-half {
+
+  float: left;
+  width: 50%;
+}
+.right-half {
+
+  float: left;
+  width: 50%;
+
+
+}
+
+/*this is the part with the navbar*/
 .navbar {
   background: #47FF9D; /* For browsers that do not support gradients */
   background: -webkit-linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2); /* For Safari 5.1 to 6.0 */
@@ -37,7 +69,57 @@
 }
 
 
-/*resizing*/
+
+
+/*for the right half : basically to create the 'box'*/
+.box {
+
+    background: #47FF9D; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2)); /* Standard syntax */
+
+
+    padding-top:10px;
+    padding-right:25px;
+    padding-left:25px;
+    padding-bottom:10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+
+/*adding the media screen resizing to match homepage. */
+@media screen and (max-width: 1196px) {
+
+	#banner {
+		padding: 18%;
+		margin-top: 6%;
+	}
+
+}
+
+@media screen and (max-width: 1065px) {
+	#banner {
+		padding: 21%;
+		margin-top: 8%;
+	}
+
+}
+
+@media screen and (max-width: 880px) {
+
+	#banner {
+		padding: 25%;
+		margin-top: 10%;
+	}
+
+}
+
 @media screen and (max-width: 761px) {
 
 	body {
@@ -48,3 +130,63 @@
     	background: linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2)); /* Standard syntax */
 
 	}
+	.navbar-default {
+		padding: 0.5% 5%;
+		background: #F8F8F8;
+	}
+
+
+	#banner {
+		background-image: url("img/IconWhite.png");
+		background-repeat: no-repeat;
+		background-size: 40%;
+		padding: 15%;
+		margin-top: 20%;
+	}
+
+	#landing-page-title {
+		font-size: 400%;
+	}
+
+	#title {
+		margin-bottom: 5%;
+	}
+
+	#overlay1 span {
+		font-size: 130%;
+	}
+
+	#small-line {
+		font-size: 150%;
+	}
+
+	#overlay2 {
+		margin: 5% 0;
+		padding: 0 5% 5%;
+		font-size: 120%;
+	}
+
+  .left-half {
+    display:none;
+  }
+
+  .right-half {
+    width: 100vw;
+
+  }
+
+  h2 {
+    font-size: 5rem;
+    padding-bottom: 20px;
+    padding-left: -5px;
+    padding-right: -5px;
+
+  }
+
+  .box {
+    background: transparent;
+
+
+  }
+
+}
