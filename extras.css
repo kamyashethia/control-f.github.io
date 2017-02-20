@@ -3,7 +3,7 @@
  body {
 	height: 100%;
 	width: 100%;
-	 background-image: url("white-background-1.jpg");
+	 background-image: url("img/white-background-1.jpg");
 }
 
 
@@ -30,7 +30,7 @@
 }
 
 #banner {
-	background-image: url("friends.jpg");
+	background-image: url("img/friends.jpg");
 	background-repeat: no-repeat;
 	background-position: center;
 	padding: 5%;
@@ -125,7 +125,7 @@ a:hover {
 	}
 
 	#banner {
-		background-image: url("friends.jpg");
+		background-image: url("img/friends.jpg");
 		background-repeat: no-repeat;
 		background-size: 40%;
 		padding: 14%;
