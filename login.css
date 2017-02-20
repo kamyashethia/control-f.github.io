@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Francois+One|PT+Mono|Space+Mono|Poppins');
+
 
 /* this is css that separates the two halves*/
 html, body, section, div {
@@ -55,13 +57,24 @@ h2 {
 }
 
 /*this is the part with the navbar*/
-.navbar {
-  background: #47FF9D; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2)); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2)); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2)); /* Standard syntax */
-  padding-right: 5px;
+.navbar-default {
+	padding: 0.5%;
+	padding-right: 5%;
+	padding-left: 0.5%;
+	background: #47FF9D; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2)); /* Standard syntax */
+    color: black;
+    font-family: Space Mono;
+    font-weight: bold;
+    font-size: 110%;
+    margin: 0;
+}
+.dropdown-toggle {
+	margin: 0;
+	padding: 0;
 }
 
 .control-label {
@@ -82,8 +95,8 @@ h2 {
 
 
     padding-top:10px;
-    padding-right:25px;
-    padding-left:25px;
+    padding-right:20px;
+    padding-left:20px;
     padding-bottom:10px;
     position: absolute;
     top: 50%;
@@ -188,5 +201,15 @@ h2 {
 
 
   }
+
+
+  .navbar-default {
+		padding: 0.5% 5%;
+		background: #F8F8F8;
+	}
+
+	#navLogo {
+		display: none;
+	}
 
 }

@@ -29,34 +29,24 @@
     margin: 0;
 }
 
-
 #banner {
-	background-image: url("img/Icon-title.png");
+	background-image: url("img/friends.jpg");
 	background-repeat: no-repeat;
 	background-position: center;
-	padding: 15%;
-	margin-top: 6%;
+	padding: 5%;
+	margin-top: 0%;
 }
 
-
-#overlay1 {
-	text-align: center;
-	position: 0;
+.dropdown-toggle {
+	margin: 0;
+	padding: 0;
 }
 
-
-#landing-page-title {
+#header {
+	margin-top: 10%;
 	font-family: Francois One;
 	font-size: 700%;
-}
-
-#title {
-	margin-bottom: 5%;
-}
-
-#overlay1 span {
-	font-family: PT Mono;
-	font-size: 150%;
+	text-align: center;
 }
 
 #small-line {
@@ -68,8 +58,7 @@
 }
 
 
-
-#overlay2 {
+#info {
 	margin: 5% 0;
 	text-align: center;
 	padding: 0 5% 5%;
@@ -89,10 +78,12 @@ a:hover {
 @media screen and (max-width: 1196px) {
 
 	#banner {
-		padding: 18%;
-		margin-top: 6%;
+		padding: 17%;
 	}
 
+	#info {
+		margin-top: 2%
+	}
 	
 }
 
@@ -101,7 +92,6 @@ a:hover {
 
 	#banner {
 		padding: 21%;
-		margin-top: 8%;
 	}
 
 }
@@ -110,8 +100,7 @@ a:hover {
 	
 
 	#banner {
-		padding: 25%;
-		margin-top: 10%;
+		padding: 23%;
 	}
 
 }
@@ -136,33 +125,35 @@ a:hover {
 	}
 
 	#banner {
-		background-image: url("img/IconWhite.png");
+		background-image: url("img/friends.jpg");
 		background-repeat: no-repeat;
 		background-size: 40%;
-		padding: 15%;
-		margin-top: 20%;
+		padding: 14%;
 	}
 
 	#landing-page-title {
 		font-size: 400%;
 	}
 	
+	#header {
+		margin-top: 15%;
+	}
+	
 	#title {
 		margin-bottom: 5%;
 	}
 
-	#overlay1 span {
-		font-size: 130%;
-	}
-
-	#small-line {
-		font-size: 150%;
-	}
-
-	#overlay2 {
-		margin: 5% 0;
-		padding: 0 5% 5%;
-		font-size: 120%;
-	}
 
 }
+
+@media screen and (min-width: 1196px){
+	#banner{
+		padding: 15%;
+	}
+	
+	#info{
+		margin-top: 0%;
+	}
+}
+
+
