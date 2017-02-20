@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css?family=Francois+One|PT+Mono|Space+Mono|Poppins');
+
+ body {
+	height: 100%;
+	width: 100%;
+	 background-image: url("white-background-1.jpg");
+}
+
+
+
+.row {
+	margin: 0;
+	padding: 0;
+}
+
+.navbar-default {
+	padding: 0.5%;
+	padding-right: 5%;
+	padding-left: 0.5%;
+	background: #47FF9D; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2)); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2)); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2)); /* Standard syntax */
+    color: black;
+    font-family: Space Mono;
+    font-weight: bold;
+    font-size: 110%;
+    margin: 0;
+}
+
+#banner {
+	background-image: url("friends.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
+	padding: 5%;
+	margin-top: 0%;
+}
+
+.dropdown-toggle {
+	margin: 0;
+	padding: 0;
+}
+
+#header {
+	margin-top: 10%;
+	font-family: Francois One;
+	font-size: 700%;
+	text-align: center;
+}
+
+#small-line {
+	text-align: center;
+	font-family: Space Mono;
+	font-weight: bold;
+	font-size: 200%;
+	
+}
+
+
+#info {
+	margin: 5% 0;
+	text-align: center;
+	padding: 0 5% 5%;
+	font-family: Space Mono;
+	font-size: 150%;
+	
+}
+
+
+
+a:hover {
+	cursor: pointer;
+    text-decoration: none;
+
+}
+
+@media screen and (max-width: 1196px) {
+
+	#banner {
+		padding: 17%;
+	}
+
+	#info {
+		margin-top: 2%
+	}
+	
+}
+
+@media screen and (max-width: 1065px) {
+	
+
+	#banner {
+		padding: 21%;
+	}
+
+}
+
+@media screen and (max-width: 880px) {
+	
+
+	#banner {
+		padding: 23%;
+	}
+
+}
+
+@media screen and (max-width: 761px) {
+	
+	body {
+		background: #47FF9D; /* For browsers that do not support gradients */
+    	background: -webkit-linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2); /* For Safari 5.1 to 6.0 */
+    	background: -o-linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2)); /* For Opera 11.1 to 12.0 */
+    	background: -moz-linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2)); /* For Firefox 3.6 to 15 */
+    	background: linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2)); /* Standard syntax */
+    	
+	}
+	.navbar-default {
+		padding: 0.5% 5%;
+		background: #F8F8F8;
+	}
+	
+	#navLogo {
+		display: none;
+	}
+
+	#banner {
+		background-image: url("friends.jpg");
+		background-repeat: no-repeat;
+		background-size: 40%;
+		padding: 14%;
+	}
+
+	#landing-page-title {
+		font-size: 400%;
+	}
+	
+	#header {
+		margin-top: 15%;
+	}
+	
+	#title {
+		margin-bottom: 5%;
+	}
+
+
+}
+
+@media screen and (min-width: 1196px){
+	#banner{
+		padding: 15%;
+	}
+	
+	#info{
+		margin-top: 0%;
+	}
+}
+
+
