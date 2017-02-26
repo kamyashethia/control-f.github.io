@@ -44,51 +44,7 @@
       			</div>
     		</div>
     	</nav>
-    	<h1>Your profile:</h1>
-    		<div class="table-responsive">
-    			<table class="table table-striped">
-    				<thead>
-    					<tr><th><strong>user ID</strong></th>
-    					<th><strong>Name</strong></th>
-    					<th><strong>Age</strong></th>
-    					<th><strong>Phone</strong></th>
-    					<th><strong>E-mail</strong></th>
-    					<th><strong>Description</strong></th></tr>
-    				</thead>
-    				<tbody>
-    					<?php
-
-			$conn = mysqli_connect("mydbinstance.cvjenxnjjyrk.us-west-2.rds.amazonaws.com:3306","admin", "admin123");
-      
-  			if (mysqli_connect_errno()) {      
-     			echo("Connect failed: %s\n"+ mysqli_connect_error());
-      			exit(1);
-  			} 
-      
-   			if ( ! mysqli_select_db($conn, "mydbinstance") ) {      
-      			echo("Error: %s\n"+ mysqli_error($conn));
-      			exit(1);
-   			}  
-
-   			$query = "SELECT * FROM user ORDER BY lastName ";
-   			if ( ! ( $result = mysqli_query($conn, $query)) ) {
-   				echo("Error: %s\n"+ mysqli_error($conn));
-   					exit(1);
-   			} 
-   			
-  			while ( $row = mysqli_fetch_assoc( $result ) ) {
-   				print "<tr><td>" . $row['userID'] . "</td><td>" . $row['firstName'] . " " . $row['lastName'] . "</td>";
-   				print "<td>" . $row['age'] . "</td><td>" . $row['email'] . "</td><td>" . $row['phone'] . "</td><td>" . $row['uDescription'] . "</td></tr>";
-    				
-   			}
-
-
-		?>		
-
-    				</tbody>
-    			</table>
-    		</div>
-    	
+    	<h1>Search page</h1>
 	</div>
 </body>
 </html>
