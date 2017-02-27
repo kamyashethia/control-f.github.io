@@ -1,9 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Francois+One|PT+Mono|Space+Mono|Poppins');
+@import url('https://fonts.googleapis.com/css?family=Francois+One|Raleway');
 
- body {
+  body {
 	height: 100%;
 	width: 100%;
-	 background-image: url("white-background-1.jpg");
+	background-color: #e0e0e0;
+	color: #6b6666;
+	padding: 1%;
 }
 
 
@@ -17,24 +19,10 @@
 	padding: 0.5%;
 	padding-right: 5%;
 	padding-left: 0.5%;
-	background: #47FF9D; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2)); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2)); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2)); /* Standard syntax */
     color: black;
-    font-family: Space Mono;
     font-weight: bold;
     font-size: 110%;
     margin: 0;
-}
-
-#banner {
-	background-image: url("friends.jpg");
-	background-repeat: no-repeat;
-	background-position: center;
-	padding: 5%;
-	margin-top: 0%;
 }
 
 .dropdown-toggle {
@@ -51,7 +39,7 @@
 
 #small-line {
 	text-align: center;
-	font-family: Space Mono;
+	font-family: Raleway;
 	font-weight: bold;
 	font-size: 200%;
 	
@@ -62,12 +50,40 @@
 	margin: 5% 0;
 	text-align: center;
 	padding: 0 5% 5%;
-	font-family: Space Mono;
+	font-family: Raleway;
 	font-size: 150%;
 	
 }
 
+img {
+	width:auto; 
+	height: auto;
+	z-index:2;
+	border-radius: 50%;
+	max-width: 235px;
+	max-height:235px;
+}
 
+
+.left { 
+	vertical-align:middle;
+	text-align: center;
+	border:  10px;
+	margin-top: 1%;
+	height: 35vh;
+}
+
+.right { 
+	margin-top: 1%;
+	height: 35vh;
+	text-align: left;
+	vertical-align: middle;
+	padding-top: 5%;
+	line-height: 1.5;
+	font-family: Raleway;
+	font-size: 200%;
+	
+}
 
 a:hover {
 	cursor: pointer;
@@ -84,6 +100,7 @@ a:hover {
 	#info {
 		margin-top: 2%
 	}
+	
 	
 }
 
@@ -106,15 +123,7 @@ a:hover {
 }
 
 @media screen and (max-width: 761px) {
-	
-	body {
-		background: #47FF9D; /* For browsers that do not support gradients */
-    	background: -webkit-linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2); /* For Safari 5.1 to 6.0 */
-    	background: -o-linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2)); /* For Opera 11.1 to 12.0 */
-    	background: -moz-linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2)); /* For Firefox 3.6 to 15 */
-    	background: linear-gradient(-90deg, #47FF7C, #47FF9D, #47FF96, #47FF9A, #47FFAB, #47FFB5, #66FFC0, #47FFC2)); /* Standard syntax */
-    	
-	}
+
 	.navbar-default {
 		padding: 0.5% 5%;
 		background: #F8F8F8;
@@ -125,7 +134,7 @@ a:hover {
 	}
 
 	#banner {
-		background-image: url("friends.jpg");
+		background-image: url("img/friends.jpg");
 		background-repeat: no-repeat;
 		background-size: 40%;
 		padding: 14%;
@@ -146,6 +155,8 @@ a:hover {
 
 }
 
+
+
 @media screen and (min-width: 1196px){
 	#banner{
 		padding: 15%;
@@ -156,4 +167,4 @@ a:hover {
 	}
 }
 
-
+}
