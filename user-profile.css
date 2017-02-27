@@ -1,0 +1,84 @@
+/*for the navbar*/
+
+@import url('https://fonts.googleapis.com/css?family=Francois+One|PT+Mono|Space+Mono|Poppins');
+.navbar-default {
+	padding: 0.5%;
+	padding-right: 5%;
+	padding-left: 0.5%;
+    font-weight: bold;
+    font-size: 110%;
+    margin: 0;
+}
+@media screen and (max-width: 761px) {
+	.navbar-default {
+		padding: 0.5% 5%;
+	}	
+}
+
+
+#top-background {
+	background-color:black;
+	width:100vw;
+	height:30vh;
+}
+
+#profile-image { 
+
+	margin-top: -5%;
+	margin-left:7%; 
+	width: 18%;
+	height:25%;
+	border: 4px solid #e8e9ea;
+
+	border-radius: 15px 0px 15px 0px;
+
+}
+
+
+
+.left-box {
+	background-color: #e8e9ea;
+	height: 25vh;
+	margin-radius: 10% 0px 10% 0px; 
+	padding: 2%;
+	vertical-align: middle;
+	margin-top: 5vh;
+	
+	
+	
+	
+}
+
+.right-box {
+	background-color: #e8e9ea; 
+	height: 25vh;
+	margin-radius: 0px 10px 0px 10px;
+	padding: 2%;
+	vertical-align: middle;
+	margin-top:5vh;
+}
+
+.top-box {
+	 
+	margin-top: -5vh;
+	z-index: -1;
+}
+
+#about-box {
+
+	padding-top: 6vh;
+
+}
+
+.break {
+
+	background-color: red;
+	height:1%;
+}
+
+
+
+
+
+
+
