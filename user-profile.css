@@ -15,6 +15,10 @@
 	}	
 }
 
+body {
+
+background-color: #f4f4f4;
+}
 
 #top-background {
 	background-color:black;
@@ -40,7 +44,7 @@
 	background-color: #e8e9ea;
 	height: 25vh;
 	margin-radius: 10% 0px 10% 0px; 
-	padding: 2%;
+	padding: 1%;
 	vertical-align: middle;
 	margin-top: 5vh;
 	
@@ -53,20 +57,20 @@
 	background-color: #e8e9ea; 
 	height: 25vh;
 	margin-radius: 0px 10px 0px 10px;
-	padding: 2%;
+	padding: 1%;
 	vertical-align: middle;
 	margin-top:5vh;
 }
 
 .top-box {
 	 
-	margin-top: -5vh;
+	margin-top:5%;
 	z-index: -1;
 }
 
 #about-box {
 
-	padding-top: 6vh;
+	padding-top:5vh;
 
 }
 
@@ -74,6 +78,43 @@
 
 	background-color: red;
 	height:1%;
+}
+
+
+.edit-icon {
+
+float: right;
+
+}
+
+.edit-icon-first {
+
+float: right;
+
+}
+
+#social-media {
+
+height:15vw;
+margin-bottom: 15vh;
+}
+
+.sub-heading {
+float:center;
+text-align: center;
+font-size: 130%;
+padding-bottom:1px;
+border-bottom: solid 1px #66FFC0;
+
+}
+
+#title-text {
+
+ margin-left: 28%;
+ font-size: 250%;
+ margin-top: -9%;
+ color:white;
+ 
 }
 
 
