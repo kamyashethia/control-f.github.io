@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css?family=Francois+One|Raleway');
+
+ body {
+	height: 100%;
+	width: 100%;
+	background-color: #e0e0e0;
+	color: #6b6666;
+	padding: 1%;
+	
+}
+
+
+
+.row {
+	margin: 0;
+	padding: 0;
+}
+
+.navbar-default {
+	padding: 0.5%;
+	padding-right: 5%;
+	padding-left: 0.5%;
+    font-weight: bold;
+    font-size: 110%;
+    margin: 0;
+}
+
+nav {
+	display: none;
+}
+
+#banner {
+	padding: 10% 0;	
+}
+
+#words {
+	text-align: center;
+	font-family: Raleway;
+	font-size: 200%;
+	height: 100%;
+}
+
+#title {
+	font-family: Francois One;
+	font-size: 400%;
+	text-align:center;
+}
+
+#freelance {
+	color: #ce7b9e;
+}
+
+#gain {
+	color: #8693d6;
+}
+
+#subheader {
+	font-family: Francois One;
+	font-size: 120%;
+}
+#description {
+	height: 100%;
+	width: auto;
+	font-size: 90%;
+}
+
+#loginDev {
+	background-color: #8693d6;
+	color: black;
+	margin: 0.5%;
+	width: auto;
+}
+
+#loginNonprofit {
+	background-color: #ce7b9e;
+	color: black;
+	margin: 0.5%;
+	width: auto;
+	
+}
+
+@media screen and (max-width: 1131px) {
+	
+	#banner {
+		padding: 15% 0;	
+	}
+	
+	#words {
+		font-size: 190%;
+	}
+}
+
+@media screen and (max-width: 895px) {
+	
+	#banner {
+		padding: 20% 0;	
+	}
+	
+	#words {
+		font-size: 170%;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	
+	#banner {
+		padding: 5% 0;	
+		margin-top: 10%;
+	}
+	
+	#words {
+		font-size: 170%;
+	}
+	
+	nav {
+		display: block;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	
+	#banner {
+		padding: 5% 0;	
+	}
+	
+	#words {
+		font-size: 130%;
+	}
+}
+
+@media screen and (max-width: 395px) {
+	
+	#banner {
+		padding: 5% 0;	
+		margin-top: 15%;
+	}
+	
+	#words {
+		font-size: 110%;
+	}
+}
+@media screen and (max-width: 320px) {
+	
+	#banner {
+		padding: 5% 0;	
+		margin-top: 20%;
+	}
+	
+	#words {
+		font-size: 99%;
+	}
+}
