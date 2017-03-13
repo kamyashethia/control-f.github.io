@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css?family=Francois+One|Raleway');
+
+.navbar-default {
+	padding: 0.5%;
+	padding-right: 5%;
+	padding-left: 0.5%;
+    font-weight: bold;
+    font-size: 110%;
+    margin: 0;
+}
+
+
+ body {
+	height: 100%;
+	width: 100%;
+	background-color: #e0e0e0;
+	color: #6b6666;
+	padding: 1%;
+}
+
+#searchbox {
+	text-align: center;
+    background-color: white;
+    border-radius: 75px;    
+    border-width: 1px;
+    border-style: solid;
+    border-color: #c4d9df;            
+    width: 100%;
+    height: 75px;
+    padding: 10px;
+    margin: 100px auto 50px;
+    overflow: hidden;
+}
+
+#search {
+	float: left;
+	padding: 20px;
+	height: 55px;
+	width: 87%;
+	background-color: #f9f9f9;
+	border: 1px solid #a4c3ca;
+    font: normal 30px;
+    font-family: Raleway;
+    border-radius: 50px 3px 3px 50px;
+}
+
+#submit {
+	float: right;
+	background-color: #47FF7C;
+    border-radius: 3px 50px 50px 3px;    
+    border-width: 1px;
+    border-style: solid;
+    border-color: #7eba7c;
+    height: 55px;
+    width: 11.5%;
+    cursor: pointer;
+    
+}
+
+#submit:active {       
+    outline: none;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;        
+}
+
+#submit::-moz-focus-inner {
+	border: 0;
+}
+
+#searchby {
+	font-size: 150%;
+	padding-bottom: 1%;
+	font-weight: bold;
+}
+
+.left {
+	padding-top: 6%;
+	padding-bottom: 30%;
+	padding-left: 3%;
+	vertical-align: middle;
+	border:  10px;
+	margin-top: 1%;
+	height: 35vh;
+	line-height: 1.5;
+	font-family: Raleway;
+	font-size: 120%;
+}
+
+.right {
+	text-align: right;
+	vertical-align: top;
+	line-height: 1.5;
+	font-family: Raleway;
+	font-size: 200%;
+}
+
+.floating-box {
+    float: center;
+    background-color: #f9f9f9;
+    width: 100%;
+    height: 40%;
+    margin-top: 20px;
+    padding: 5%;
+    border-radius: 50px 10px 50px 10px;
+    border: 3px solid #7eba7c;
+}
+
+#nonprofit {
+	font-family: Raleway;
+	font-size: 200%;
+	text-align: center;
+	font-weight: bold;
+	margin-top: -5%;
+}
+
+.logos {
+	vertical-align: bottom;
+	text-align: center;
+	border:  20px;
+	margin-left: -3%;
+	height: 35vh;
+	padding-top: 0.5%;
+}
+
+img {
+	width:auto; 
+	height: auto;
+	z-index:2;
+	text-align: center;
+	max-height: 180px;
+	max-width: 180px;
+}
+
+.info {
+	vertical-align: center;
+	text-align: left;
+	border:  20px;
+	padding-top: 7%;
+	margin-left: -3%;
+	margin-top: -4%;
+	margin-left: 1%;
+	height: 35vh;
+}
+
+#project {
+	text-align: center;
+	font-family: Raleway;
+	font-size: 200%;
+	font-weight: bold;
+}
+
+#description {
+	text-align: center;
+	font-family: Raleway;
+	font-size: 120%;
+	line-height: 1.5;
+}
+
+.reviews {
+	padding-top: 8%;
+	font-family: Raleway;
+	text-align: left;
+	font-family: Raleway;
+	font-size: 120%;
+	line-height: 1.5;
+}
+
+.rating > span:hover:before {
+   content: "\2605";
+   position: absolute;
+}
+
+/*.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+}
+
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+}*/
+
+@media screen and (max-width: 761px) {
+
+	.left {
+		padding-top: 7%;
+		padding-bottom: 0%;
+	}
+
+	.right {
+		margin-top: 0px;
+	}
+
+	.floating-box {
+		height: 70%;
+	}
+
+	.logos {
+		background-color: red;
+		text-align: center;
+		padding-left: 40%;
+	}
+
+}
+
+@media screen and (max-width: 561px) {
+
+	.left {
+		padding-top: 9%;
+		padding-bottom: 0%;
+	}
+
+}
+
+
+@media screen and (min-width: 900px){
+	.left{
+		padding-top: 4%; 
+		padding-bottom: 20%;
+	}
+}
+
+
+
+}
+
+
+
+
+
+
+
