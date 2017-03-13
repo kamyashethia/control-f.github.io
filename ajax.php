@@ -28,14 +28,15 @@ switch ($func) {
 		} 
 		break;
 	case 'skills':
-		foreach ($text as $skill) {
-			$query = "SELECT skillName FROM userSkill WHERE userID = 1 AND skillName = '" . $skill . "'";
+		for ($i = 0; $i<count($text); $i++) {
+			$query = "SELECT * FROM userSkill WHERE userID = 1 AND skillName = '" . $text[i][0] . "'";
 			if ( ! ( $result = mysqli_query($conn, $query)) ) {
 		 		echo("Error: %s\n"+ mysqli_error($conn));
 		 		exit(1);
 		 	}
 		 	if (mysqli_num_rows($result) == 0) { #skillName doesn't exist yet, so we use INSERT statement to add skill for user
-		 		$query1 = "INSERT INTO userSkill (skillName, userID) VALUES ('" . $skill . "', 1)";
+		 		$query1 = "INSERT INTO userSkill (skillName, userID, yearsExp, portfolioURL) 
+		 				VALUES ('" . $text[i][0] . "', 1," . $text[i][1] . ", '" . $text[i][2] . "')";
 		 		if ( ! mysqli_query($conn, $query) ) {
 		 			echo("Error: %s\n"+ mysqli_error($conn));
 		 			exit(1);
