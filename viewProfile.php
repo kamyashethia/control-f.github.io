@@ -245,40 +245,69 @@
 			</div>
 			
 			<div class="col-sm-9  col-sm-offset-2 left-box " id = "social-media"> 
-				<button onclick="editSocial(this);" class="edit-icon"> 
+				<button onclick="editLinks(this);" class="edit-icon"> 
 		  			<span class="glyphicon glyphicon-pencil "></span> 
+		  		</button>
+		  		<button  onclick="update('links-facts')" class="edit-icon"> 
+		  			<span class="glyphicon glyphicon-floppy-disk""></span> 
 		  		</button>
 		  		 <br>
 				<p class = "sub-heading" > Other Places to Find Developer </p> 
-				<p id="social-media-text" contentEditable="false">
-				<?php #query to get list of skills and project links#
-		 			$query = "SELECT links FROM mydbinstance.links WHERE id = 1";
-		 			if ( ! ( $result = mysqli_query($conn, $query)) ) {
-		 				echo("Error: %s\n"+ mysqli_error($conn));
-		 				exit(1);
-		 			}
-					if (mysqli_num_rows($result) > 0) {
-		 				while($row = mysqli_fetch_assoc($result)) {
-		 					echo($row['links'] . "<br>");
-		 				}
-		 			} else {
-		 				echo("User has no links to show.");
-		 			}
-				?> 	 	 
+				<p>
+				<div class="table-responsive">
+					<table class="table table-striped" id="link-table">
+						<thead><tr>
+							<th>Name</th>
+							<th>URL</th>
+							</tr>
+						</thead>
+						<tbody>
+						<?php 
+						$query = "SELECT name, links FROM links WHERE id=1";
+						if ( ! ( $result = mysqli_query($conn, $query)) ) {
+							echo("Error: %s\n"+ mysqli_error($conn));
+							exit(1);
+						}
+						while($row = mysqli_fetch_assoc($result)) {
+							echo("<tr class='linkz'><td class='link-text' contentEditable='false'>" . $row['name'] .
+									"</td><td class='link-text' contentEditable='false'><a href='" . $row['links'] . "'>" . $row['links'] . "</a>
+									</td><td><span class='glyphicon glyphicon-remove' onclick='removeLink(this)'></span></tr>");
+						}
+						
+
+						?>
+						<button type="button" class="btn btn-info" onclick="addLink()"><span class="glyphicon glyphicon-plus"></span></button>
+						</tbody>
+					</table>
+				</div>
 				</p>
 
 				<script>
-			  	function editSocial(button) {
-			    	var text = document.getElementById("social-media-text");
+			  	function editLinks(button) {
+			    	var text = document.getElementsByClassName("link-text");
 			    	var box = document.getElementById("social-media");
-				    if (text.contentEditable == "true") {
-				        text.contentEditable = "false";
+			    	var startEdit=false;
+					for (var i=0; i<text.length; i++) {
+						if (text[i].contentEditable == "true") {
+							startEdit == true;
+							break;
+						}
+					}
+			    
+				    if (startEdit) {
+				    	for (var i=0; i<text.length; i++) {
+							text[i].contentEditable = "false";
+								
+						}
 				       	box.style.backgroundColor="#e8e9ea";
-				       	 box.style.border = "none";
+				       	box.style.border = "none";
 				       
 				    } else {
-				        text.contentEditable = "true";
-				        box.style.backgroundColor ="#f2f2f2";
+				    	for (var i=0; i<text.length; i++) {
+							text[i].contentEditable = "true";
+								
+						}
+						box.style.backgroundColor ="#f2f2f2";
 				        box.style.border = "2px dashed #cecece";
 				       
 				    }
@@ -320,6 +349,30 @@
 	    document.getElementById("skill-table").deleteRow(j);
 		
 	}
+
+	function addLink() {
+		var table = document.getElementById('link-table');
+		var row = table.insertRow(-1);
+		row.className = "linkz";
+		var cell1 = row.insertCell(0);
+		var cell2 = row.insertCell(1);
+		var cell3 = row.insertCell(2);
+		cell1.className = "link-text";
+		cell2.className = "link-text";
+		cell3.className = "link-text";
+		var att = document.createAttribute("contentEditable");
+		att.value=false;
+		cell1.setAttributeNode(att);
+		cell2.setAttributeNode(att.cloneNode(true));
+		cell1.innerHTML = "Name";
+		cell2.innerHTML = "URL";
+		cell3.innerHTML = "<span class='glyphicon glyphicon-remove' onclick='removeLink(this)'></span>";
+	}
+
+	function removeLink(link) {
+		var j = link.parentNode.parentNode.rowIndex;
+	    document.getElementById("link-table").deleteRow(j);
+	}
 	
 	function update(id) {
 		var box = document.getElementById(id);
@@ -357,6 +410,28 @@
 						urls.push("no website available");
 					} else {
 						urls.push(s[2].innerHTML);
+					}			
+				}
+				size = text.length;
+				break;
+			case 'links-facts':
+				f = 'links';
+				var linkz = document.getElementsByClassName('linkz');
+				text = []; urls=[];
+				for (var i=0; i<linkz.length; i++) {
+					var s = linkz[i].getElementsByClassName('link-text');
+					if (s[1].innerHTML.indexOf("<a href") == -1) {
+						var web = s[1].innerHTML;
+					} else {
+						var a = s[1].getElementsByTagName('a');
+						var web = a[0].innerHTML;
+					}
+					text.push(s[0].innerHTML);	
+					
+					if (web == "") {
+						urls.push("no website available");
+					} else {
+						urls.push(web);
 					}			
 				}
 				size = text.length;
