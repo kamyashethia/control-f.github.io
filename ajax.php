@@ -4,12 +4,27 @@ include 'connectDB.php';
 if (isset($_POST['func'])) {
 	$func = $_POST['func'];
 	
-}
+} 
 
 if (isset($_POST['textUpdate'])) {
 	$text = $_POST['textUpdate'];
 		
-}
+} 
+
+if (isset($_POST['tYear'])) {
+	$years = $_POST['tYear'];
+
+} 
+
+if (isset($_POST['tURL'])) {
+	$urls = $_POST['tURL'];
+
+} 
+
+if (isset($_POST['s'])) {
+	$size = $_POST['s'];
+
+} 
 
 switch ($func) {
 	case 'about':
@@ -28,21 +43,24 @@ switch ($func) {
 		} 
 		break;
 	case 'skills':
-		foreach ($text as $skill) {
-			$query = "SELECT skillName FROM userSkill WHERE userID = 1 AND skillName = '" . $skill . "'";
-			if ( ! ( $result = mysqli_query($conn, $query)) ) {
-		 		echo("Error: %s\n"+ mysqli_error($conn));
-		 		exit(1);
-		 	}
-		 	if (mysqli_num_rows($result) == 0) { #skillName doesn't exist yet, so we use INSERT statement to add skill for user
-		 		$query1 = "INSERT INTO userSkill (skillName, userID) VALUES ('" . $skill . "', 1)";
-		 		if ( ! mysqli_query($conn, $query) ) {
-		 			echo("Error: %s\n"+ mysqli_error($conn));
-		 			exit(1);
-		 		}
-		 	} 
+		#Delete all skills from table where userID = id of current user
+		$query = "DELETE FROM userSkill WHERE userID =1";
+		if (mysqli_query($conn, $query)) {
+		} else {
+			echo "Error deleting records: " . mysqli_error($conn);
+		}
+		#Insert all the values back
+		for ($i=0; $i < $size; $i++) {
+			$query = "INSERT INTO userSkill (skillName, userID, yearsExp, portfolioURL)
+				VALUES ('" . $text[$i] . 
+				"', 1, " . $years[$i] . ", '" . $urls[$i] . "')";
+			if (mysqli_query($conn, $query)) {
+			} else {
+				echo "Error inserting record: " . mysqli_error($conn);
+			}
 			
 		}
+		
 		break;
 	default:
 		die("Choose a function!");

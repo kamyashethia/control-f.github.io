@@ -72,7 +72,7 @@ width:100vw;
 
 .left-box {
 	background-color: #e8e9ea;
-	height: 25vh;
+	height: auto;
 	margin-radius: 10% 0px 10% 0px; 
 	padding: 1%;
 	vertical-align: middle;
@@ -128,7 +128,10 @@ border-bottom: solid 1px #66FFC0;
 
 }
 
-
+.glyphicon-remove:hover {
+	    cursor:pointer;
+	
+}
 
 
 

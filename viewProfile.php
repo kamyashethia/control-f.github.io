@@ -169,150 +169,73 @@
 		  		</script>
 			
 			</div>
-		 
-			
-			<!--second row-->
-		  	<div class="col-sm-4 col-sm-offset-2 left-box " id = "skills-box"> 
-		  		<button onclick="editSkills(this);" class="edit-icon"> 
+
+			<!-- 3rd row -->
+
+			<div class="col-sm-9 col-sm-offset-2 left-box " id = "skills-box"> 
+				<button onclick="editSkills(this);" class="edit-icon"> 
 		  			<span class="glyphicon glyphicon-pencil "></span> 
 		  		</button>
-		  		<button  onclick="update('allSkills')" class="edit-icon"> 
+		  		<button  onclick="update('skills-facts')" class="edit-icon"> 
 		  			<span class="glyphicon glyphicon-floppy-disk""></span> 
 		  		</button> <br>
-				<p class = "sub-heading" > Skills </p>
-				<p id="skills-text" contentEditable="false">
-				<?php #query to get list of skills and project links#
-		 			$query = "SELECT skillName FROM userSkill, user WHERE user.userID = 1 AND userSkill.userID = user.userID ";
-		 			if ( ! ( $result = mysqli_query($conn, $query)) ) {
-		 				echo("Error: %s\n"+ mysqli_error($conn));
-		 				exit(1);
-		 			}
-		 			$count=0;
-		 			if (mysqli_num_rows($result) > 0) {
-		 				while($row = mysqli_fetch_assoc($result)) {
-		 					if ($count == 0) {
-		 						echo($row['skillName']);
-		 					} else {
-		 						echo(", " . $row['skillName']);
-		 					}
-		 					$count++;
-		 				}
-		 			} else {
-		 				echo("User has no skills.");
-		 			}
-				?> 	 
-				<div id="allSkills" style="display: none; column-count: 3;">
-					<input type="checkbox" class="skillz" name="HTML" value="HTML">HTML<br>
-					<input type="checkbox" class="skillz" name="CSS" value="CSS">CSS<br>
-					<input type="checkbox" class="skillz" name="Coldfusion" value="Coldfusion">Coldfusion<br>
-					<input type="checkbox" class="skillz" name="Java" value="Java">Java<br>
-					<input type="checkbox" class="skillz" name="Javascript" value="Javascript">Javascript<br>
-					<input type="checkbox" class="skillz" name="Python" value="Python">Python<br>
-					<input type="checkbox" class="skillz" name="C/C++" value="C/C\+\+">C/C++<br>
-					<input type="checkbox" class="skillz" name="Swift" value="Swift">Swift<br>
-					<input type="checkbox" class="skillz" name="PHP" value="PHP">PHP<br>
-					<input type="checkbox" class="skillz" name="webDev" value="Web Dev">Web Dev<br>
-					<input type="checkbox" class="skillz" name="android" value="Android Dev">Android Dev<br>
-					<input type="checkbox" class="skillz" name="iOS" value="iOS Dev">iOS Dev<br>
+				<p class = "sub-heading" >Skills </p>
+				<p>
+				<div class="table-responsive">
+					<table class="table table-striped" id="skill-table">
+						<thead><tr>
+							<th>Skill</th>
+							<th>Years of Experience</th>
+							<th>Sample URL</th></tr>
+						</thead>
+						<tbody>
+						<?php 
+						$query = "SELECT skillName, yearsExp, portfolioURL FROM userSkill WHERE userID = 1";
+						if ( ! ( $result = mysqli_query($conn, $query)) ) {
+							echo("Error: %s\n"+ mysqli_error($conn));
+							exit(1);
+						}
+						while($row = mysqli_fetch_assoc($result)) {
+							echo("<tr class='skillz'><td class='skills-text' contentEditable='false'>" . $row['skillName'] . 
+									"</td><td class='skills-text' contentEditable='false'>" . $row['yearsExp'] . 
+									"</td><td class='skills-text' contentEditable='false'>" . $row['portfolioURL'] . 
+									"</td><td><span class='glyphicon glyphicon-remove' onclick='removeSkill(this)'></span></tr>");
+						}
+
+						?>
+												
+						<button type="button" class="btn btn-info" onclick="addSkill()"><span class="glyphicon glyphicon-plus"></span></button>
+						</tbody>
+					</table>
 				</div>
 				</p>
 
 				<script>
 			  	function editSkills(button) {
-			    	var text = document.getElementById("skills-text");
+			    	var text = document.getElementsByClassName("skills-text");
 			    	var box = document.getElementById("skills-box");
-			    	var allSkills = document.getElementById("allSkills");
-			    	var skillz = document.getElementsByClassName("skillz");
-				    if (text.contentEditable == "true") {
-				        text.contentEditable = "false";
-				        text.style.display="block";
-				        allSkills.style.display="none";
+			    	var startEdit=false;
+					for (var i=0; i<text.length; i++) {
+						if (text[i].contentEditable == "true") {
+							startEdit == true;
+							break;
+						}
+					}
+			    
+				    if (startEdit) {
+				    	for (var i=0; i<text.length; i++) {
+							text[i].contentEditable = "false";
+								
+						}
 				       	box.style.backgroundColor="#e8e9ea";
 				       	box.style.border = "none";
 				       
 				    } else {
-				        text.contentEditable = "true";
-				        text.style.display="none";
-				        for (var i=0; i<skillz.length; i++) {
-					        if (text.innerHTML.search(skillz[i].value) > -1) {
-						       	skillz[i].checked = true;
-					        } 
-				        }  
-				        allSkills.style.display="block";
-				        box.style.backgroundColor ="#f2f2f2";
-				        box.style.border = "2px dashed #cecece";
-				       	
-				    }
-				}
-		  		</script>
-			
-			</div>
-
-
-		  	<div class="col-sm-4  col-sm-offset-1 right-box " id = "projects-box"> 
-		  		<button onclick="editProjects(this);" class="edit-icon"> 
-		  			<span class="glyphicon glyphicon-pencil "></span> 
-		  		</button> <br>
-				<p class = "sub-heading" >Proof of skills  </p>
-				<p id="projects-text" contentEditable="false">
-				 <?php #query to get list of skills and project links#
-		 			$query = "SELECT portfolioURL FROM userSkill, user WHERE user.userID = 1 AND userSkill.userID = user.userID ";
-		 			if ( ! ( $result = mysqli_query($conn, $query)) ) {
-		 				echo("Error: %s\n"+ mysqli_error($conn));
-		 				exit(1);
-		 			}
-		 			if (mysqli_num_rows($result) > 0) {
-		 				while($row = mysqli_fetch_assoc($result)) {
-		 					echo($row['portfolioURL'] . "<br>");
-		 				}
-		 			} else {
-		 				echo("User has no project links.");
-		 			}
-				?> 	 	 
-				</p>
-
-				<script>
-			  	function editProjects(button) {
-			    	var text = document.getElementById("projects-text");
-			    	var box = document.getElementById("projects-box");
-				    if (text.contentEditable == "true") {
-				        text.contentEditable = "false";
-				       	box.style.backgroundColor="#e8e9ea";
-				       	 box.style.border = "none";
-				       
-				    } else {
-				        text.contentEditable = "true";
-				        box.style.backgroundColor ="#f2f2f2";
-				        box.style.border = "2px dashed #cecece";
-				       
-				    }
-				}
-		  		</script>
-			</div>
-
-			<!-- 3rd row -->
-
-			<div class="col-sm-9 col-sm-offset-2 left-box " id = "awards-box"> 
-				<button onclick="editAwards(this);" class="edit-icon"> 
-		  			<span class="glyphicon glyphicon-pencil "></span> 
-		  		</button> <br>
-				<p class = "sub-heading" >Significant Achievements </p>
-				<p id="awards-text" contentEditable="false">
-				 	 
-				</p>
-
-				<script>
-			  	function editAwards(button) {
-			    	var text = document.getElementById("awards-text");
-			    	var box = document.getElementById("awards-box");
-				    if (text.contentEditable == "true") {
-				        text.contentEditable = "false";
-				       	box.style.backgroundColor="#e8e9ea";
-				       	 box.style.border = "none";
-				       
-				    } else {
-				        text.contentEditable = "true";
-				        box.style.backgroundColor ="#f2f2f2";
+				    	for (var i=0; i<text.length; i++) {
+							text[i].contentEditable = "true";
+								
+						}
+						box.style.backgroundColor ="#f2f2f2";
 				        box.style.border = "2px dashed #cecece";
 				       
 				    }
@@ -324,7 +247,8 @@
 			<div class="col-sm-9  col-sm-offset-2 left-box " id = "social-media"> 
 				<button onclick="editSocial(this);" class="edit-icon"> 
 		  			<span class="glyphicon glyphicon-pencil "></span> 
-		  		</button> <br>
+		  		</button>
+		  		 <br>
 				<p class = "sub-heading" > Other Places to Find Developer </p> 
 				<p id="social-media-text" contentEditable="false">
 				<?php #query to get list of skills and project links#
@@ -369,10 +293,41 @@
 <?php mysqli_close($conn); ?>
 
 <script>
+	function addSkill() {
+		var table = document.getElementById('skill-table');
+		var row = table.insertRow(-1);
+		row.className = "skillz";
+		var cell1 = row.insertCell(0);
+		var cell2 = row.insertCell(1);
+		var cell3 = row.insertCell(2);
+		var cell4 = row.insertCell(3);
+		cell1.className = "skills-text";
+		cell2.className = "skills-text";
+		cell3.className = "skills-text";
+		var att = document.createAttribute("contentEditable");
+		att.value=false;
+		cell1.setAttributeNode(att);
+		cell2.setAttributeNode(att.cloneNode(true));
+		cell3.setAttributeNode(att.cloneNode(true));
+		cell1.innerHTML = "Skill";
+		cell2.innerHTML = "0";
+		cell3.innerHTML = "sample website";
+		cell4.innerHTML = "<span class='glyphicon glyphicon-remove' onclick='removeSkill(this)'></span>";
+	}
+
+	function removeSkill(skill) {
+		var j = skill.parentNode.parentNode.rowIndex;
+	    document.getElementById("skill-table").deleteRow(j);
+		
+	}
+	
 	function update(id) {
 		var box = document.getElementById(id);
 		var text="";
 		var func = "";
+		var years="";
+		var urls="";
+		var size=0;
 		switch(id) {
 			case 'about-text':
 				f = 'about';
@@ -390,16 +345,21 @@
 				var phone = document.getElementById('myPhone');
 				text = [parseFloat(age.innerHTML), email.innerHTML, phone.innerHTML];
 				break;
-			case 'allSkills':
+			case 'skills-facts':
 				var skillz = document.getElementsByClassName('skillz');
 				f = 'skills';
-				text=[];
+				text = []; years = []; urls=[];
 				for (var i=0; i<skillz.length; i++) {
-					if (skillz[i].checked == true) {
-						text.push(skillz[i].name);
-					}
+					var s = skillz[i].getElementsByClassName('skills-text');
+					text.push(s[0].innerHTML);	
+					years.push(s[1].innerHTML);
+					if (s[2].innerHTML == "") {
+						urls.push("no website available");
+					} else {
+						urls.push(s[2].innerHTML);
+					}			
 				}
-				alert(text);
+				size = text.length;
 				break;
 			default:
 				alert("Error");
@@ -408,7 +368,7 @@
 		$.ajax ({
 			type: "POST",
 			url: "ajax.php",
-			data: {func: f, textUpdate: text},
+			data: {func: f, textUpdate: text, tYear: years, tURL: urls, s: size},
 			dataType: "html",
 			success: function(data) {
 				var success = document.getElementById("updateYes");
