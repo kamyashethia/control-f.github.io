@@ -58,7 +58,25 @@ switch ($func) {
 			} else {
 				echo "Error inserting record: " . mysqli_error($conn);
 			}
-			
+		}
+		break;
+	case 'links':
+		#Delete all links from table where userID = id of current user
+		$query = "DELETE FROM links WHERE id =1";
+		if (mysqli_query($conn, $query)) {
+		} else {
+			echo "Error deleting records: " . mysqli_error($conn);
+		}
+		#Insert all the links back
+		for ($i=0; $i < $size; $i++) {
+			$query = "INSERT INTO links (id, name, links)
+				VALUES (1, '" . $text[$i] . "', '" . $urls[$i] . "')";
+						
+			if (mysqli_query($conn, $query)) {
+			} else {
+				echo "Error inserting record: " . mysqli_error($conn);
+			}
+				
 		}
 		
 		break;
