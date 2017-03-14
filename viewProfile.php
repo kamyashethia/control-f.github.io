@@ -182,7 +182,7 @@
 				<p class = "sub-heading" >Skills </p>
 				<p>
 				<div class="table-responsive">
-					<table class="table table-striped">
+					<table class="table table-striped" id="skill-table">
 						<thead><tr>
 							<th>Skill</th>
 							<th>Years of Experience</th>
@@ -190,7 +190,7 @@
 						</thead>
 						<tbody>
 						<?php 
-						$query = "SELECT skillID, skillName, yearsExp, portfolioURL FROM userSkill WHERE userID = 1";
+						$query = "SELECT skillName, yearsExp, portfolioURL FROM userSkill WHERE userID = 1";
 						if ( ! ( $result = mysqli_query($conn, $query)) ) {
 							echo("Error: %s\n"+ mysqli_error($conn));
 							exit(1);
@@ -199,10 +199,12 @@
 							echo("<tr class='skillz'><td class='skills-text' contentEditable='false'>" . $row['skillName'] . 
 									"</td><td class='skills-text' contentEditable='false'>" . $row['yearsExp'] . 
 									"</td><td class='skills-text' contentEditable='false'>" . $row['portfolioURL'] . 
-									"</td></tr>");
+									"</td><td><span class='glyphicon glyphicon-remove' onclick='removeSkill(this)'></span></tr>");
 						}
 
 						?>
+												
+						<button type="button" class="btn btn-info" onclick="addSkill()"><span class="glyphicon glyphicon-plus"></span></button>
 						</tbody>
 					</table>
 				</div>
@@ -291,10 +293,41 @@
 <?php mysqli_close($conn); ?>
 
 <script>
+	function addSkill() {
+		var table = document.getElementById('skill-table');
+		var row = table.insertRow(-1);
+		row.className = "skillz";
+		var cell1 = row.insertCell(0);
+		var cell2 = row.insertCell(1);
+		var cell3 = row.insertCell(2);
+		var cell4 = row.insertCell(3);
+		cell1.className = "skills-text";
+		cell2.className = "skills-text";
+		cell3.className = "skills-text";
+		var att = document.createAttribute("contentEditable");
+		att.value=false;
+		cell1.setAttributeNode(att);
+		cell2.setAttributeNode(att.cloneNode(true));
+		cell3.setAttributeNode(att.cloneNode(true));
+		cell1.innerHTML = "Skill";
+		cell2.innerHTML = "0";
+		cell3.innerHTML = "sample website";
+		cell4.innerHTML = "<span class='glyphicon glyphicon-remove' onclick='removeSkill(this)'></span>";
+	}
+
+	function removeSkill(skill) {
+		var j = skill.parentNode.parentNode.rowIndex;
+	    document.getElementById("skill-table").deleteRow(j);
+		
+	}
+	
 	function update(id) {
 		var box = document.getElementById(id);
 		var text="";
 		var func = "";
+		var years="";
+		var urls="";
+		var size=0;
 		switch(id) {
 			case 'about-text':
 				f = 'about';
@@ -315,12 +348,18 @@
 			case 'skills-facts':
 				var skillz = document.getElementsByClassName('skillz');
 				f = 'skills';
-				text = []
+				text = []; years = []; urls=[];
 				for (var i=0; i<skillz.length; i++) {
 					var s = skillz[i].getElementsByClassName('skills-text');
-					text.push([s[0].innerHTML, s[1].innerHTML, s[2].innerHTML]);				
+					text.push(s[0].innerHTML);	
+					years.push(s[1].innerHTML);
+					if (s[2].innerHTML == "") {
+						urls.push("no website available");
+					} else {
+						urls.push(s[2].innerHTML);
+					}			
 				}
-				alert(text[0]);alert(text[1]);alert(text[2]);
+				size = text.length;
 				break;
 			default:
 				alert("Error");
@@ -329,7 +368,7 @@
 		$.ajax ({
 			type: "POST",
 			url: "ajax.php",
-			data: {func: f, textUpdate: text},
+			data: {func: f, textUpdate: text, tYear: years, tURL: urls, s: size},
 			dataType: "html",
 			success: function(data) {
 				var success = document.getElementById("updateYes");
