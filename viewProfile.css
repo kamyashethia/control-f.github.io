@@ -115,7 +115,7 @@ border: none;
 
 #social-media {
 
-height:15vw;
+height:auto;
 margin-bottom: 15vh;
 }
 
@@ -128,7 +128,10 @@ border-bottom: solid 1px #66FFC0;
 
 }
 
-
+.glyphicon-remove:hover {
+	    cursor:pointer;
+	
+}
 
 
 
