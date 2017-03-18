@@ -27,6 +27,7 @@ if (isset($_POST['s'])) {
 } 
 
 switch ($func) {
+	#Update the description of user
 	case 'about':
 		$query = "UPDATE user SET uDescription = '" . $text . "' WHERE userID = 1";
 		if (mysqli_query($conn, $query)) {
@@ -34,6 +35,8 @@ switch ($func) {
 			echo "Error updating record: " . mysqli_error($conn);
 		}
 		break;
+		
+	#Update the email, age, phone of user
 	case 'facts':
 		$age = $text[0]; $email = $text[1]; $phone = $text[2];
 		$query = "UPDATE user SET age = " . $age . ", email = '" . $email . "', phone= '" . $phone . "' WHERE userID = 1";
@@ -42,6 +45,8 @@ switch ($func) {
 			echo "Error updating record: " . mysqli_error($conn);
 		} 
 		break;
+		
+	#Update, add, delete skills
 	case 'skills':
 		#Delete all skills from table where userID = id of current user
 		$query = "DELETE FROM userSkill WHERE userID =1";
@@ -60,6 +65,8 @@ switch ($func) {
 			}
 		}
 		break;
+		
+	#Update, add, delete social media of user
 	case 'links':
 		#Delete all links from table where userID = id of current user
 		$query = "DELETE FROM links WHERE id =1";
@@ -78,8 +85,45 @@ switch ($func) {
 			}
 				
 		}
-		
 		break;
+		
+	#Search for developers/company	
+	case 'search':
+		$menu = $text[0];
+		$sub_menu = $text[1];
+		if (strcmp($menu, "dev") == 0) {
+			$query = "";
+		} else { #query to search for company using given focus
+			$query="SELECT compID, cName FROM company WHERE Focus LIKE '%" . $sub_menu . "%'";
+		}
+		if (! ( $result = mysqli_query($conn, $query))) {
+			echo "Error getting records: " . mysqli_error($conn);
+		}
+		$data = array();
+		while($row = mysqli_fetch_array($result)) {
+   			$data[] = $row;
+		}
+		
+		print json_encode($data); //must have this for php to return json object
+
+		break;
+	case 'view':
+		$menu = $text[0];
+		$id = $text[1];
+		if (strcmp($menu, "dev") == 0) {
+			$query = "";
+		} else { #query to search for company info using given compID
+			$query="SELECT cName, contactPerson, cEmail, linkURL, cDescription, Founder, Location, Focus FROM company WHERE compID =" . $id;
+		}
+		if (! ( $result = mysqli_query($conn, $query))) {
+			echo "Error getting records: " . mysqli_error($conn);
+		}
+		$data = array();
+		$row = mysqli_fetch_assoc($result);
+		$data[] = $row;
+		print json_encode($data); //must have this for php to return json object
+		break;
+		
 	default:
 		die("Choose a function!");
 }
