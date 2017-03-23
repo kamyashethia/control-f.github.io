@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css?family=Francois+One|Raleway');
+
+.navbar-default {
+	padding: 0.5%;
+	padding-right: 5%;
+	padding-left: 0.5%;
+    font-weight: bold;
+    font-size: 110%;
+    margin: 0;
+}
+
+
+ body {
+	height: 100%;
+	width: 100%;
+	background-color: #e0e0e0;
+	color: #6b6666;
+	padding: 1%;
+}
+
+h1 {
+	font-family: Raleway;
+	font-size: 300%;
+	text-align: left;
+	padding-top: 6%;
+	padding-left: 4%;
+	font-weight: bold;
+}
+
+p {
+	font-family: Raleway;
+	font-size: 250%;
+	text-align: center;
+}
+
+label {
+	margin-left: 3%;
+}
+
+#projtype {
+	margin-top: 1%;
+}
+
+#why {
+	width:50%;
+}
+
+input[type=text] {
+    width: 90%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    margin-left: 3%;
+}
+
+input[type=submit] {
+	text-align: center;
+	background-color: #4ec996;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin-top: 3%;
+    margin-left: 40%;
+    cursor: pointer
+}
+
+
+@media screen and (max-width: 761px) {
+
+	.left {
+		padding-top: 7%;
+		padding-bottom: 0%;
+	}
+
+	.right {
+		margin-top: 0px;
+	}
+
+	.floating-box {
+		height: 70%;
+	}
+
+	.logos {
+		background-color: red;
+		text-align: center;
+		padding-left: 40%;
+	}
+
+}
+
+@media screen and (max-width: 561px) {
+
+	.left {
+		padding-top: 9%;
+		padding-bottom: 0%;
+	}
+
+}
+
+
+@media screen and (min-width: 900px){
+	.left{
+		padding-top: 4%; 
+		padding-bottom: 20%;
+	}
+}
+
+
+
+}
+
+
+
+
+
+
+
