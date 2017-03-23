@@ -5,7 +5,6 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
-	
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -21,8 +20,6 @@
 	<link rel="stylesheet" href="viewProfile.css">
 	<link rel="icon" href="img\icon.ico" type="image/x-icon">
 	<title>Control-F</title>
-	
-		
 
 </head>
 <?php include "connectDB.php"?>
@@ -63,7 +60,6 @@
    				$row = mysqli_fetch_assoc($result);
    				echo($row['firstName'] . " " . $row['lastName']);
    			?>
-			
 			</div>	 
 		</div>
 		<div class = "container-fluid" id = "division-bar"> 
@@ -80,13 +76,13 @@
   				<strong>ERROR: Profile failed to update.</strong>
 			</div>
 			
-		  	<!--first row-->
+			<div class="row" id="row1"> 
 		  	<div class="col-sm-4 col-sm-offset-2 left-box left-box" id = "about-box">
 		  		<button onclick="editAbout(this);" class="edit-icon"> 
 		  			<span class="glyphicon glyphicon-pencil "></span> 
 		  		</button>
-		  		<button  onclick="update('about-text')" class="edit-icon"> 
-		  			<span class="glyphicon glyphicon-floppy-disk""></span> 
+		  		<button onclick="update('about-text')" class="edit-icon"> 
+		  			<span id='save-about-text' class="glyphicon glyphicon-floppy-disk""></span> 
 		  		</button>
 		  		<br>
 				<p class = "sub-heading" > About Developer </p>
@@ -105,16 +101,19 @@
 			  	function editAbout(button) {
 			    	var text = document.getElementById("about-text");
 			    	var box = document.getElementById("about-box");
+			    	var save = document.getElementById('save-about-text');
+			    	
 				    if (text.contentEditable == "true") {
 				        text.contentEditable = "false";
 				       	box.style.backgroundColor="#e8e9ea";
 				       	 box.style.border = "none";
+				       	 save.style.display = 'none';
 				       
 				    } else {
 				        text.contentEditable = "true";
 				        box.style.backgroundColor ="#f2f2f2";
 				        box.style.border = "2px dashed #cecece";
-				       
+				        save.style.display = 'block';
 				    }
 				}
 		  		</script>
@@ -126,8 +125,8 @@
 				<button onclick="editFacts(this);" class="edit-icon"> 
 		  			<span class="glyphicon glyphicon-pencil "></span> 
 		  		</button>
-		  		<button  onclick="update('quick-facts')" class="edit-icon"> 
-		  			<span class="glyphicon glyphicon-floppy-disk""></span> 
+		  		<button onclick="update('quick-facts')" class="edit-icon"> 
+		  			<span id='save-quick-facts' class="glyphicon glyphicon-floppy-disk""></span> 
 		  		</button> <br>
 				<p class = "sub-heading" > Quick Facts </p>
 				<p id="quick-facts">
@@ -138,9 +137,9 @@
    					exit(1);
    				} 
    				while($row = mysqli_fetch_assoc($result)) {
-   					echo("Age: &nbsp; <span contentEditable='false' class='facts-text' id='myAge'>" . $row['age'] . "</span><br>");
-   					echo("Email: &nbsp; <span contentEditable='false' class='facts-text' id='myEmail'>" . $row['email'] . "</span><br>");
-   					echo("Phone: &nbsp; <span contentEditable='false' class='facts-text' id='myPhone'>" . $row['phone'] . "</span><br>");
+   					echo("Age: &nbsp; <span id='myAge'>" . $row['age'] . "</span><br>");
+   					echo("Phone: &nbsp; <span contentEditable='false' id='myPhone'>" . $row['phone'] . "</span><br>");
+   					echo("Email: &nbsp; <span id='myEmail'>" . $row['email'] . "</span><br>");
    				}
    				
    				?>	 
@@ -148,39 +147,48 @@
 
 				<script>
 			  	function editFacts(button) {
-			    	var text = document.getElementsByClassName("facts-text");
+			    	var text = document.getElementById("myPhone");
+			    	var age = document.getElementById("myAge");
 			    	var box = document.getElementById("quick-facts-box");
-				    if (text[0].contentEditable == "true" || text[1].contentEditable == "true" || text[2].contentEditable == "true") {
-				        text[0].contentEditable = "false";
-				        text[1].contentEditable = "false";
-				        text[2].contentEditable = "false";
+			    	var save = document.getElementById('save-quick-facts');
+				    if (text.contentEditable == "true") {
+				        text.contentEditable = "false";
+				        var s = document.getElementById('age');
+				        age.innerHTML = s.options[s.selectedIndex].value;
+				        save.style.display="none";
 				       	box.style.backgroundColor="#e8e9ea";
 				       	box.style.border = "none";
 				       
 				    } else {
-				        text[0].contentEditable = "true";
-				        text[1].contentEditable = "true";
-				        text[2].contentEditable = "true";
+				        text.contentEditable = "true";
 				        box.style.backgroundColor ="#f2f2f2";
 				        box.style.border = "2px dashed #cecece";
-				       
+				        save.style.display="block";
+				        var temp = age.innerHTML;
+				        age.innerHTML = "<select id='age' name='age'></selected>";
+				        for (var i = 1; i<=100; i++) {
+					        if (i==temp) {
+					        	$("#age").append("<option value='"+i+"' selected>"+i+"</option>");
+					        } else {   
+					        	$("#age").append("<option value='"+i+"'>"+i+"</option>");
+					        }
+				        }
 				    }
 				}
 		  		</script>
-			
 			</div>
+			</div> <!-- end row -->
 
-			<!-- 3rd row -->
-
+			<div class="row" id="row2">
 			<div class="col-sm-9 col-sm-offset-2 left-box " id = "skills-box"> 
 				<button onclick="editSkills(this);" class="edit-icon"> 
 		  			<span class="glyphicon glyphicon-pencil "></span> 
 		  		</button>
 		  		<button  onclick="update('skills-facts')" class="edit-icon"> 
-		  			<span class="glyphicon glyphicon-floppy-disk""></span> 
+		  			<span id='save-skills-facts' class="glyphicon glyphicon-floppy-disk""></span> 
 		  		</button> <br>
 				<p class = "sub-heading" >Skills </p>
-				<p>
+				<p> <span id="temp" contentEditable="false" hidden></span>
 				<div class="table-responsive">
 					<table class="table table-striped" id="skill-table">
 						<thead><tr>
@@ -196,15 +204,15 @@
 							exit(1);
 						}
 						while($row = mysqli_fetch_assoc($result)) {
-							echo("<tr class='skillz'><td class='skills-text' contentEditable='false'>" . $row['skillName'] . 
-									"</td><td class='skills-text' contentEditable='false'>" . $row['yearsExp'] . 
-									"</td><td class='skills-text' contentEditable='false'>" . $row['portfolioURL'] . 
+							echo("<tr class='skillz'><td class='skills-text-name'>" . $row['skillName'] . 
+									"</td><td class='skills-text-yrs'>" . $row['yearsExp'] . 
+									"</td><td class='skills-text'>" . $row['portfolioURL'] . 
 									"</td><td><span class='glyphicon glyphicon-remove' onclick='removeSkill(this)'></span></tr>");
 						}
 
 						?>
 												
-						<button type="button" class="btn btn-info" onclick="addSkill()"><span class="glyphicon glyphicon-plus"></span></button>
+						<button type="button" id="add-skill" class="btn btn-info addMe" onclick="addSkill()"><span class="glyphicon glyphicon-plus"></span></button>
 						</tbody>
 					</table>
 				</div>
@@ -212,48 +220,54 @@
 
 				<script>
 			  	function editSkills(button) {
-			    	var text = document.getElementsByClassName("skills-text");
+			    	var text = document.getElementsByClassName("skills-text-name");
+			    	var textyrs = document.getElementsByClassName("skills-text-yrs");
 			    	var box = document.getElementById("skills-box");
-			    	var startEdit=false;
-					for (var i=0; i<text.length; i++) {
-						if (text[i].contentEditable == "true") {
-							startEdit == true;
-							break;
-						}
-					}
-			    
-				    if (startEdit) {
-				    	for (var i=0; i<text.length; i++) {
-							text[i].contentEditable = "false";
-								
-						}
+			    	var temp = document.getElementById('temp');
+			    	var save = document.getElementById('save-skills-facts');
+			    	var add = document.getElementById('add-skill');
+			    	var e = document.getElementsByClassName("skill-list");
+			    	var n = document.getElementsByClassName("skill-years-list");
+				    if (temp.contentEditable == "true") { //CLOSE EDITING VIEW
+				    	temp.contentEditable = "false";
 				       	box.style.backgroundColor="#e8e9ea";
 				       	box.style.border = "none";
-				       
-				    } else {
-				    	for (var i=0; i<text.length; i++) {
-							text[i].contentEditable = "true";
+				       	save.style.display = "none";
+				       	add.style.display = "none";
+				       	var rowCount = $('#skill-table tr').length;
+						if (rowCount > 1) {			//only turn text non-editable when there are rows of data
+							for (var i=0; i<text.length; i++) {
+						   		var ex = e[i].options[e[i].selectedIndex].text;
+								text[i].innerHTML = ex;
 								
+							}
 						}
+				       	                 				     
+				       
+				    } else {  //START EDITING
+				    	temp.contentEditable = "true";
 						box.style.backgroundColor ="#f2f2f2";
 				        box.style.border = "2px dashed #cecece";
-				       
+				    	save.style.display = "block";
+				    	add.style.display = "block";
+				    	
 				    }
 				}
 		  		</script>
-				
 			</div>
+			</div> <!-- end row -->
 			
+			<div class="row" id="row3">
 			<div class="col-sm-9  col-sm-offset-2 left-box " id = "social-media"> 
 				<button onclick="editLinks(this);" class="edit-icon"> 
 		  			<span class="glyphicon glyphicon-pencil "></span> 
 		  		</button>
 		  		<button  onclick="update('links-facts')" class="edit-icon"> 
-		  			<span class="glyphicon glyphicon-floppy-disk""></span> 
+		  			<span id="save-links" class="glyphicon glyphicon-floppy-disk""></span> 
 		  		</button>
 		  		 <br>
 				<p class = "sub-heading" > Other Places to Find Developer </p> 
-				<p>
+				<p><span id="temp" contentEditable="false" hidden></span>
 				<div class="table-responsive">
 					<table class="table table-striped" id="link-table">
 						<thead><tr>
@@ -274,9 +288,8 @@
 									</td><td><span class='glyphicon glyphicon-remove' onclick='removeLink(this)'></span></tr>");
 						}
 						
-
 						?>
-						<button type="button" class="btn btn-info" onclick="addLink()"><span class="glyphicon glyphicon-plus"></span></button>
+						<button type="button" id='add-link' class="btn btn-info addMe" onclick="addLink()"><span class="glyphicon glyphicon-plus"></span></button>
 						</tbody>
 					</table>
 				</div>
@@ -286,36 +299,29 @@
 			  	function editLinks(button) {
 			    	var text = document.getElementsByClassName("link-text");
 			    	var box = document.getElementById("social-media");
-			    	var startEdit=false;
-					for (var i=0; i<text.length; i++) {
-						if (text[i].contentEditable == "true") {
-							startEdit == true;
-							break;
-						}
-					}
-			    
-				    if (startEdit) {
-				    	for (var i=0; i<text.length; i++) {
-							text[i].contentEditable = "false";
-								
-						}
+			    	var temp = document.getElementById('temp');
+			    	var save = document.getElementById('save-links');
+			    	var add = document.getElementById('add-link');
+			    	
+				    if (temp.contentEditable == "true") {
+				    	temp.contentEditable = "false";
 				       	box.style.backgroundColor="#e8e9ea";
 				       	box.style.border = "none";
+				       	save.style.display = "none";
+				       	add.style.display = "none";
 				       
 				    } else {
-				    	for (var i=0; i<text.length; i++) {
-							text[i].contentEditable = "true";
-								
-						}
+				    	temp.contentEditable = "true";
 						box.style.backgroundColor ="#f2f2f2";
 				        box.style.border = "2px dashed #cecece";
-				       
+				    	save.style.display = "block";
+				    	add.style.display = "block";
 				    }
 				}
 		  		</script>
 				
-			</div>
-		  	
+			</div> <!-- end column -->
+		  	</div> <!-- end row -->
 		</div>
 		  	
 	</div>	
@@ -330,16 +336,20 @@
 		var cell2 = row.insertCell(1);
 		var cell3 = row.insertCell(2);
 		var cell4 = row.insertCell(3);
-		cell1.className = "skills-text";
-		cell2.className = "skills-text";
-		cell3.className = "skills-text";
-		var att = document.createAttribute("contentEditable");
-		att.value=false;
-		cell1.setAttributeNode(att);
-		cell2.setAttributeNode(att.cloneNode(true));
-		cell3.setAttributeNode(att.cloneNode(true));
-		cell1.innerHTML = "Skill";
-		cell2.innerHTML = "0";
+		cell1.className = "skills-text-name";
+		cell2.className = "skills-text-yrs";
+		cell1.innerHTML = "<select class='skill-list'></select>";
+	
+	    $(".skill-list").append("<option>Skill 1</option><option>Skill 2</option>");
+	       
+		cell2.innerHTML = "<select class='skill-years-list'></select>";
+		for (var i = 1; i<=100; i++) {
+	        if (i==temp) {
+	        	$(".skill-years-list").append("<option value='"+i+"' selected>"+i+"</option>");
+	        } else {   
+	        	$(".skill-years-list").append("<option value='"+i+"'>"+i+"</option>");
+	        }
+        }
 		cell3.innerHTML = "sample website";
 		cell4.innerHTML = "<span class='glyphicon glyphicon-remove' onclick='removeSkill(this)'></span>";
 	}
@@ -380,7 +390,7 @@
 		var func = "";
 		var years="";
 		var urls="";
-		var size=0;
+		var size=0;			
 		switch(id) {
 			case 'about-text':
 				f = 'about';
@@ -389,14 +399,9 @@
 			case 'quick-facts':
 				f = 'facts';
 				var text = [];
-				var age = document.getElementById('myAge');
-				if (parseFloat(age.innerHTML) % 1 != 0 || typeof parseFloat(age.innerHTML) != 'number' || parseFloat(age.innerHTML) < 0) {
-					alert("Please use a whole number greater than 0 for age");
-					return;
-				}
-				var email = document.getElementById('myEmail'); 
+				var age = document.getElementById('age');
 				var phone = document.getElementById('myPhone');
-				text = [parseFloat(age.innerHTML), email.innerHTML, phone.innerHTML];
+				text = [age.value, phone.innerHTML];
 				break;
 			case 'skills-facts':
 				var skillz = document.getElementsByClassName('skillz');

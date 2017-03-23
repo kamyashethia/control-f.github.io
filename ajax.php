@@ -38,8 +38,8 @@ switch ($func) {
 		
 	#Update the email, age, phone of user
 	case 'facts':
-		$age = $text[0]; $email = $text[1]; $phone = $text[2];
-		$query = "UPDATE user SET age = " . $age . ", email = '" . $email . "', phone= '" . $phone . "' WHERE userID = 1";
+		$age = $text[0]; $phone = $text[1]; 
+		$query = "UPDATE user SET age = " . $age . ", phone= '" . $phone . "' WHERE userID = 1";
 		if (mysqli_query($conn, $query)) {
 		} else {
 			echo "Error updating record: " . mysqli_error($conn);
