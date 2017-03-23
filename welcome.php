@@ -44,7 +44,7 @@
       			</div>
     		</div>
     	</nav>
-    	<h1>welcome page</h1>
+    	<h1 style="padding-top:20%;">welcome page</h1>
 	</div>
 </body>
 </html>
