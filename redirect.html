@@ -32,8 +32,12 @@ This page is used for authentication as well as POST using the Iframe+form+hash 
 		}
 		
 		 $( document ).ready(function() {
-			 window.location.href = 'welcome.php';
-			 hello(auth.network).api('me').then(function(r) {
+		    	window.location.href = 'welcome.php';
+		    });
+	</script>
+    <script>
+   
+       hello(auth.network).api('me').then(function(r) {
                  alert(r.name);
             // Inject it into the container
             var label = document.getElementById('profile_' + auth.network);
@@ -49,15 +53,8 @@ This page is used for authentication as well as POST using the Iframe+form+hash 
           var lab = document.getElementById("pic_and_greet");
           if (lab != null) document.body.removeChild( lab );
         });
-			 
-			 
-			 
-			 
-			 
-			 
-		    	
-		 });
-	</script>
 
+      </script>
+	
 </body>
 </html>
