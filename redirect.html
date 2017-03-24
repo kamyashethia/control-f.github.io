@@ -16,27 +16,22 @@ This page is used for authentication as well as POST using the Iframe+form+hash 
 	<link href="./hello/redirect.css" rel="stylesheet" />
 	<link href="hello/redirect.css" rel="stylesheet" />
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="./hello/hello.polyfill.js"></script>
-	<script src="./hello/hello.js"></script>
-	<script src="hello/hello.polyfill.js"></script>
-	<script src="hello/hello.js"></script>
+	
 </head>
 <body>
 
 	<div class="loading"><span>&bull;</span><span>&bull;</span><span>&bull;</span></div>
 
+	<h2>Please close this window to continue.</h2>
 	<script>
 		window.onbeforeunload = function(){
 			document.getElementsByTagName('h2')[0].innerHTML="Redirecting, please wait";
 
 		}
-		
-		 $( document ).ready(function() {
-		    	window.location.href = 'welcome.php';
-		    });
 	</script>
     <script>
-   
+    $( document ).ready(function() {
+    });
        hello(auth.network).api('me').then(function(r) {
                  alert(r.name);
             // Inject it into the container
@@ -55,6 +50,9 @@ This page is used for authentication as well as POST using the Iframe+form+hash 
         });
 
       </script>
-	
+	<script src="./hello/hello.polyfill.js"></script>
+	<script src="./hello/hello.js"></script>
+	<script src="hello/hello.polyfill.js"></script>
+	<script src="hello/hello.js"></script>
 </body>
 </html>
