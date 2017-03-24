@@ -62,9 +62,9 @@
         </script>
         <br>
 
-          <button id="top-button" class ="buttons" style=" background-color:black; color:#f2f2f2"><i id ="top-icon" class="fa fa-github icons" style="font-size:4rem;color:#f2f2f2; "></i> Access with Github</button>
+          <button id="top-button" class ="buttons" style=" background-color:black; color:#f2f2f2" onclick="hello('github').login()"><i id ="top-icon" class="fa fa-github icons" style="font-size:4rem;color:#f2f2f2; " 8onclick="hello('linkedin').login()"></i> Access with Github</button>
 
-          <button class ="buttons" style="background-color:rgb(0, 119, 181); color:#f2f2f2"><i id ="bottom-icon" class="fa fa-linkedin icons" style="font-size:4rem;color:#f2f2f2"></i> Access with Linkedin</button>
+          <button class ="buttons" style="background-color:rgb(0, 119, 181); color:#f2f2f2" onclick="hello('linkedin').login()"8><i id ="bottom-icon" class="fa fa-linkedin icons" style="font-size:4rem;color:#f2f2f2"></i> Access with Linkedin</button>
 
         <p id = "bottom-text">
 
@@ -76,49 +76,35 @@
 
 
 
-      <!-- SCRIPTS -->
-      <!--
-          <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-          <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-          -->
-      <script src="hello.all.js"></script>
-      <script>
+    <script src="hello.all.js"></script>
+      
+        <script class="pre">
         hello.init({
-          google: "73862463897-ofr3bic69njtn603du9epk57648c3j7q.apps.googleusercontent.com"
-        });
+           github: "ffe1c437297f06e9e275"
+        },{
+            scope: 'email',
+            redirect_uri: 'redirect.html'
+          });
       </script>
 
         <script>
         hello.init({
            linkedin: "86eqyv837hjh0w"
-        });
-      </script>
-
-      <script>
-
-        hello.on('auth.login', function (auth) {
-
-             hello(auth.network).api('me').then(function(r) {
-            // Inject it into the container
-            var label = document.getElementById('profile_' + auth.network);
-            if (!label) {
-                label = document.createElement('div');
-                label.id = 'profile_' + auth.network;
-                document.getElementById('profile').appendChild(label);
-            }
-            label.innerHTML = '<img src="' + r.thumbnail + '" /> Hey ' + r.name;
-        });
-
-        });
-
-        hello.on('auth.logout', function () {
-          var lab = document.getElementById("pic_and_greet");
-          if (lab != null) document.body.removeChild( lab );
-        });
-
+        },{
+            scope: 'email',
+            redirect_uri: 'redirect.html'
+          });
       </script>
 
 
 
 </body>
+<script class="pre">
+hello.on('auth.login', function(auth) {
+    hello(auth.network).api('/me').then(function(r) {               
+        console.log("name = "+r.name);
+        console.log("email = " + r.email);
+    });
+});
+</script>  
 </html>
