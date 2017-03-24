@@ -50,34 +50,7 @@
     		</div>
     	</nav>
     	<h1 style="padding-top:20%;">welcome page</h1>
-		<div class="loading"><span>&bull;</span><span>&bull;</span><span>&bull;</span></div>
-	
-	<script>
-		window.onbeforeunload = function(){
-			document.getElementsByTagName('h2')[0].innerHTML="Redirecting, please wait";
 
-		}
-	</script>
-    <script>
-       hello(auth.network).api('me').then(function(r) {
-                 alert(r.name);
-            // Inject it into the container
-            var label = document.getElementById('profile_' + auth.network);
-            if (!label) {
-                label = document.createElement('div');
-                label.id = 'profile_' + auth.network;
-                document.getElementById('profile').appendChild(label);
-            }
-            label.innerHTML = '<img src="' + r.thumbnail + '" /> Hey ' + r.name;
-        });
-
-        hello.on('auth.logout', function () {
-          var lab = document.getElementById("pic_and_greet");
-          if (lab != null) document.body.removeChild( lab );
-        });
-
-      </script>
-      
       <script>
 
 hello.on('auth.login', function(auth) {
@@ -90,9 +63,6 @@ hello.on('auth.login', function(auth) {
 
 </script>
     <script src="hello.all.js"></script>
-	<script src="./hello/hello.polyfill.js"></script>
-	<script src="./hello/hello.js"></script>
-	<script src="hello/hello.polyfill.js"></script>
-	<script src="hello/hello.js"></script>
+	
 </body>
 </html>
