@@ -49,15 +49,15 @@
     	<h1 style="padding-top:15%;" id="banner"></h1>
 
 <script src="hello.all.js"></script>
+<script src="./hello/hello.polyfill.js"></script>
+<script src="./hello/hello.js"></script>
+<script src="hello/hello.polyfill.js"></script>
 <script src="hello/hello.js"></script>
 <script>
 
 var userName= "";
 var userEmail ="";
-      
 
-
-$( document ).ready(function() {
 	hello.on('auth.login', function(auth) {
 	    hello(auth.network).api('/me').then(function(r) {               
 	        console.log("name = "+r.name);
@@ -68,9 +68,6 @@ $( document ).ready(function() {
 	});
 	var banner = document.getElementById("banner");
 	banner.innerHTML = "Hi " + userName + "! Your email is " + userEmail + ".";
-});
-
-
 </script>
     
 	
