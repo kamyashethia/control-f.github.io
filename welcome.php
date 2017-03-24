@@ -66,6 +66,13 @@ var userEmail ="";
 	        userEmail = r.email;
 	    });
 	});
+
+	hello('linkedin').api('me').then(function(json) {
+		console.log('Your name is ' + json.name);
+	}, function(e) {
+		alert('Whoops! ' + e.error.message);
+	});
+	
 	var banner = document.getElementById("banner");
 	banner.innerHTML = "Hi " + userName + "! Your email is " + userEmail + ".";
 </script>
