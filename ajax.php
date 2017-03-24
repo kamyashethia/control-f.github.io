@@ -26,6 +26,7 @@ if (isset($_POST['s'])) {
 
 } 
 
+
 switch ($func) {
 	#Update the description of user
 	case 'about':

@@ -206,7 +206,7 @@
 						while($row = mysqli_fetch_assoc($result)) {
 							echo("<tr class='skillz'><td class='skills-text-name'>" . $row['skillName'] . 
 									"</td><td class='skills-text-yrs'>" . $row['yearsExp'] . 
-									"</td><td class='skills-text'>" . $row['portfolioURL'] . 
+									"</td><td class='skills-text' contentEditable='false'>" . $row['portfolioURL'] . 
 									"</td><td><span class='glyphicon glyphicon-remove' onclick='removeSkill(this)'></span></tr>");
 						}
 
@@ -220,37 +220,78 @@
 
 				<script>
 			  	function editSkills(button) {
-			    	var text = document.getElementsByClassName("skills-text-name");
-			    	var textyrs = document.getElementsByClassName("skills-text-yrs");
 			    	var box = document.getElementById("skills-box");
 			    	var temp = document.getElementById('temp');
 			    	var save = document.getElementById('save-skills-facts');
 			    	var add = document.getElementById('add-skill');
-			    	var e = document.getElementsByClassName("skill-list");
-			    	var n = document.getElementsByClassName("skill-years-list");
+			    	var s = document.getElementsByClassName('skills-text-name');
+			    	var y = document.getElementsByClassName('skills-text-yrs');
+			    	var t = document.getElementsByClassName('skills-text');
 				    if (temp.contentEditable == "true") { //CLOSE EDITING VIEW
 				    	temp.contentEditable = "false";
 				       	box.style.backgroundColor="#e8e9ea";
 				       	box.style.border = "none";
 				       	save.style.display = "none";
 				       	add.style.display = "none";
+				       	for (var i=0; i<t.length; i++) {	//for the website box
+					       	t[i].contentEditable = "false";
+				       	}
 				       	var rowCount = $('#skill-table tr').length;
 						if (rowCount > 1) {			//only turn text non-editable when there are rows of data
-							for (var i=0; i<text.length; i++) {
-						   		var ex = e[i].options[e[i].selectedIndex].text;
-								text[i].innerHTML = ex;
-								
-							}
-						}
-				       	                 				     
-				       
+					
+							
+						}				       		
 				    } else {  //START EDITING
 				    	temp.contentEditable = "true";
 						box.style.backgroundColor ="#f2f2f2";
 				        box.style.border = "2px dashed #cecece";
 				    	save.style.display = "block";
 				    	add.style.display = "block";
-				    	
+				    	for (var i=0; i<t.length; i++) { //for the website box
+					       	t[i].contentEditable = "true";
+				       	}
+				    	var tempName = "";
+				    	var tempYr = "";
+				    	for (var i=0; i<s.length; i++) {
+					    	tempName = s[i].innerHTML;
+					    	s[i].innerHTML="<select class='pickSkill'>\
+					    		<option value='web'>Website/Web application</option>\
+			    				<option value='android'>Mobile - android application</option>\
+			    				<option value='ios'>Mobile - iOS application</option>\
+			    				<option value='social'>Social Media</option>\
+			    				<option value='game'>Game development</option>\
+			    				<option value='graphic'>Graphic Design</option>\
+			    				<option value='support'>IT Support</option>\
+			    				<option value='html'>HTML</option>\
+			    				<option value='sql'>SQL</option>\
+			    				<option value='java'>Java</option>\
+			    				<option value='python'>Python</option>\
+			    				<option value='php'>PHP</option>\
+			    				<option value='swift'>Swift</option></select>";
+		    				var o = s[i].getElementsByTagName('option');
+		    				for (var j=0; j<o.length; j++) {
+			    				if (o[j].innerHTML == tempName) {
+				    				o[j].selected = "selected";
+			    				}
+		    				}
+				    	}
+				    	for (var i=0; i<s.length; i++) {
+					    	tempYr = y[i].innerHTML;
+					    	y[i].innerHTML="";
+					    	newSelect = document.createElement("select");
+					    	newSelect.className = "pickYear";
+					    	y[i].appendChild(newSelect);
+					    	menu = document.getElementsByClassName("pickYear");
+					    	for (var j=1; j<=100; j++) {
+					    		newOpt = document.createElement('option');
+					    		newOpt.value = j;
+					    		newOpt.text = j;
+						    	if (j==tempYr) {
+							    	newOpt.selected = "selected";
+						    	} 
+					    		menu[i].appendChild(newOpt);
+					    	}
+				    	}
 				    }
 				}
 		  		</script>
@@ -283,11 +324,10 @@
 							exit(1);
 						}
 						while($row = mysqli_fetch_assoc($result)) {
-							echo("<tr class='linkz'><td class='link-text' contentEditable='false'>" . $row['name'] .
-									"</td><td class='link-text' contentEditable='false'><a href='" . $row['links'] . "'>" . $row['links'] . "</a>
+							echo("<tr class='linkz'><td class='link-text'>" . $row['name'] .
+									"</td><td class='link-url' contentEditable='false'><a href='" . $row['links'] . "'>" . $row['links'] . "</a>
 									</td><td><span class='glyphicon glyphicon-remove' onclick='removeLink(this)'></span></tr>");
 						}
-						
 						?>
 						<button type="button" id='add-link' class="btn btn-info addMe" onclick="addLink()"><span class="glyphicon glyphicon-plus"></span></button>
 						</tbody>
@@ -297,29 +337,61 @@
 
 				<script>
 			  	function editLinks(button) {
-			    	var text = document.getElementsByClassName("link-text");
 			    	var box = document.getElementById("social-media");
 			    	var temp = document.getElementById('temp');
 			    	var save = document.getElementById('save-links');
 			    	var add = document.getElementById('add-link');
+			    	var t = document.getElementsByClassName('link-url');
+			    	var s = document.getElementsByClassName('link-text');
+			       	var theLink = document.getElementsByClassName('pickLink');
 			    	
-				    if (temp.contentEditable == "true") {
+			    	
+				    if (temp.contentEditable == "true") { //CLOSE EDIT VIEW
 				    	temp.contentEditable = "false";
 				       	box.style.backgroundColor="#e8e9ea";
 				       	box.style.border = "none";
 				       	save.style.display = "none";
 				       	add.style.display = "none";
+				       	var selected=[];
+				       	 
+				       	for (var i=0; i<theLink.length; i++) {
+				       		selected.push(theLink[i].options[theLink[i].selectedIndex].text);
+				       	}
+				       	for (var i=0; i<t.length; i++) { //for the website box
+					       	t[i].contentEditable = "false";
+				       	}
+				       console.log(selected);
 				       
-				    } else {
+				    } else { //OPEN EDIT VIEW
 				    	temp.contentEditable = "true";
 						box.style.backgroundColor ="#f2f2f2";
 				        box.style.border = "2px dashed #cecece";
 				    	save.style.display = "block";
 				    	add.style.display = "block";
+				    	for (var i=0; i<t.length; i++) { //for the website box
+					       	t[i].contentEditable = "true";
+				       	}
+				       	var tempName="";
+				    	for (var i=0; i<s.length; i++) {
+					    	tempName = s[i].innerHTML;
+					    	s[i].innerHTML="<select class='pickLink'>\
+					    		<option value='github'>GitHub</option>\
+					    		<option value='linkedin'>LinkedIn</option>\
+					    		<option value='google'>Google</option>\
+					    		<option value='twitter'>Twitter</option>\
+					    		<option value='website'>Personal Website</option>\
+					    		<option value='instagram'>Instagram</option>\
+					    		<option value='project'>Project Link</option></select>";
+		    				var o = s[i].getElementsByTagName('option');
+		    				for (var j=0; j<o.length; j++) {
+			    				if (o[j].innerHTML == tempName) {
+				    				o[j].selected = "selected";
+			    				}
+		    				}
+				    	}
 				    }
 				}
 		  		</script>
-				
 			</div> <!-- end column -->
 		  	</div> <!-- end row -->
 		</div>
@@ -336,20 +408,36 @@
 		var cell2 = row.insertCell(1);
 		var cell3 = row.insertCell(2);
 		var cell4 = row.insertCell(3);
+		var att = document.createAttribute("contentEditable");
+		att.value=true;
+		cell3.setAttributeNode(att);
 		cell1.className = "skills-text-name";
 		cell2.className = "skills-text-yrs";
-		cell1.innerHTML = "<select class='skill-list'></select>";
-	
-	    $(".skill-list").append("<option>Skill 1</option><option>Skill 2</option>");
-	       
-		cell2.innerHTML = "<select class='skill-years-list'></select>";
+		cell3.className = "skills-text";
+		cell1.innerHTML = "<select class='pickSkill'>\
+    		<option value='web'>Website/Web application</option>\
+			<option value='android'>Mobile - android application</option>\
+			<option value='ios'>Mobile - iOS application</option>\
+			<option value='social'>Social Media</option>\
+			<option value='game'>Game development</option>\
+			<option value='graphic'>Graphic Design</option>\
+			<option value='support'>IT Support</option>\
+			<option value='html'>HTML</option>\
+			<option value='sql'>SQL</option>\
+			<option value='java'>Java</option>\
+			<option value='python'>Python</option>\
+			<option value='php'>PHP</option>\
+			<option value='swift'>Swift</option></select>";
+
+		var cell2String = "<select class='pickYear'></select>";
 		for (var i = 1; i<=100; i++) {
 	        if (i==temp) {
-	        	$(".skill-years-list").append("<option value='"+i+"' selected>"+i+"</option>");
+	        	cell2String += "<option value='"+i+"' selected>"+i+"</option>";
 	        } else {   
-	        	$(".skill-years-list").append("<option value='"+i+"'>"+i+"</option>");
+	        	cell2String += "<option value='"+i+"'>"+i+"</option>";
 	        }
         }
+        cell2.innerHTML = cell2String;
 		cell3.innerHTML = "sample website";
 		cell4.innerHTML = "<span class='glyphicon glyphicon-remove' onclick='removeSkill(this)'></span>";
 	}
@@ -368,13 +456,19 @@
 		var cell2 = row.insertCell(1);
 		var cell3 = row.insertCell(2);
 		cell1.className = "link-text";
-		cell2.className = "link-text";
-		cell3.className = "link-text";
+		cell2.className = "link-url";
 		var att = document.createAttribute("contentEditable");
-		att.value=false;
-		cell1.setAttributeNode(att);
-		cell2.setAttributeNode(att.cloneNode(true));
-		cell1.innerHTML = "Name";
+		att.value=true;
+		cell2.setAttributeNode(att);
+		cell1.innerHTML = "<select class='pickLink'>\
+    		<option value='github'>GitHub</option>\
+    		<option value='linkedin'>LinkedIn</option>\
+    		<option value='google'>Google</option>\
+    		<option value='twitter'>Twitter</option>\
+    		<option value='website'>Personal Website</option>\
+    		<option value='instagram'>Instagram</option>\
+    		<option value='project'>Project Link</option></select>";
+		
 		cell2.innerHTML = "URL";
 		cell3.innerHTML = "<span class='glyphicon glyphicon-remove' onclick='removeLink(this)'></span>";
 	}
@@ -404,34 +498,35 @@
 				text = [age.value, phone.innerHTML];
 				break;
 			case 'skills-facts':
-				var skillz = document.getElementsByClassName('skillz');
+				var skillz = document.getElementsByClassName('pickSkill');
 				f = 'skills';
 				text = []; years = []; urls=[];
+				var yrs = document.getElementsByClassName('pickYear');
+				var links = document.getElementsByClassName('skills-text');
 				for (var i=0; i<skillz.length; i++) {
-					var s = skillz[i].getElementsByClassName('skills-text');
-					text.push(s[0].innerHTML);	
-					years.push(s[1].innerHTML);
-					if (s[2].innerHTML == "") {
+					text.push(skillz[i].options[skillz[i].selectedIndex].text);
+					years.push(yrs[i].options[yrs[i].selectedIndex].value);
+					
+					if (links[i].innerHTML == "") {
 						urls.push("no website available");
 					} else {
-						urls.push(s[2].innerHTML);
-					}			
+						urls.push(links[i].innerHTML);
+					}	
 				}
-				size = text.length;
 				break;
 			case 'links-facts':
 				f = 'links';
-				var linkz = document.getElementsByClassName('linkz');
+				var linkName = document.getElementsByClassName('pickLink');
+				var linkz = document.getElementsByClassName('link-url');
 				text = []; urls=[];
-				for (var i=0; i<linkz.length; i++) {
-					var s = linkz[i].getElementsByClassName('link-text');
-					if (s[1].innerHTML.indexOf("<a href") == -1) {
-						var web = s[1].innerHTML;
+				for (var i=0; i<linkName.length; i++) {
+					if (linkz[i].innerHTML.indexOf("<a href") == -1) {
+						var web = linkz[i].innerHTML;
 					} else {
-						var a = s[1].getElementsByTagName('a');
-						var web = a[0].innerHTML;
+						var a = linkz[i].getElementsByTagName('a');
+						var web = a[i].innerHTML;
 					}
-					text.push(s[0].innerHTML);	
+					text.push(linkName[i].options[linkName[i].selectedIndex].text);	
 					
 					if (web == "") {
 						urls.push("no website available");
@@ -439,7 +534,9 @@
 						urls.push(web);
 					}			
 				}
+				
 				size = text.length;
+				
 				break;
 			default:
 				alert("Error");
