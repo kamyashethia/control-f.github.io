@@ -58,7 +58,11 @@ hello.utils.extend(hello, {
 		// OAuth1 shim
 		// The path to the OAuth1 server for signing user requests
 		// Want to recreate your own? Checkout https://github.com/MrSwitch/node-oauth-shim
+<<<<<<< HEAD
 		//oauth_proxy: 'https://auth-server.herokuapp.com/proxy',
+=======
+		oauth_proxy: 'https://auth-server.herokuapp.com/proxy',
+>>>>>>> control-f/master
 
 		// API timeout in milliseconds
 		timeout: 20000,
