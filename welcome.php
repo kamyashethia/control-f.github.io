@@ -55,16 +55,17 @@
 var userName= "";
 var userEmail ="";
       
-hello.on('auth.login', function(auth) {
-    hello(auth.network).api('/me').then(function(r) {               
-        console.log("name = "+r.name);
-        console.log("email = " + r.email);
-        userName = r.name;
-        userEmail = r.email;
-    });
-});
+
 
 $( document ).ready(function() {
+	hello.on('auth.login', function(auth) {
+	    hello(auth.network).api('/me').then(function(r) {               
+	        console.log("name = "+r.name);
+	        console.log("email = " + r.email);
+	        userName = r.name;
+	        userEmail = r.email;
+	    });
+	});
 	var banner = document.getElementById("banner");
 	banner.innerHTML = "Hi " + userName + "! Your email is " + userEmail + ".";
 });
