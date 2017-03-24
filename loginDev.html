@@ -73,7 +73,15 @@
         </p>
       </div>
 
+<script class="pre">
+hello.on('auth.login', function(auth) {
+    hello(auth.network).api('/me').then(function(r) {               
+        console.log("name(login) = "+r.name);
+        console.log("email(login) = " + r.email);
+    });
 
+});
+</script> 
 
     <script src="hello.all.js"></script>
       
@@ -98,13 +106,5 @@
 
 
 </body>
-<script class="pre">
-hello.on('auth.login', function(auth) {
-    hello(auth.network).api('/me').then(function(r) {               
-        console.log("name(login) = "+r.name);
-        console.log("email(login) = " + r.email);
-    });
-
-});
-</script>  
+ 
 </html>

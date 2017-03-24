@@ -38,6 +38,7 @@ This page is used for authentication as well as POST using the Iframe+form+hash 
 	<script src="hello/hello.polyfill.js"></script>
 	<script src="hello/hello.js"></script>
     <script>
+    hello.on( "auth.login", dump_login);
 
        hello(auth.network).api('me').then(function(r) {
                  alert(r.name);
