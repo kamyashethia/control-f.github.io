@@ -67,7 +67,7 @@ var userEmail ="";
 	    });
 	});
 
-	hello('linkedin').api('me').then(function(json) {
+	hello(r.network).api('me').then(function(json) {
 		console.log('Your name is ' + json.name);
 	}, function(e) {
 		alert('Whoops! ' + e.error.message);
