@@ -22,17 +22,18 @@ This page is used for authentication as well as POST using the Iframe+form+hash 
 
 	<div class="loading"><span>&bull;</span><span>&bull;</span><span>&bull;</span></div>
 
-	<h2>Please close this window to continue.</h2>
 	<script>
 		window.onbeforeunload = function(){
 			document.getElementsByTagName('h2')[0].innerHTML="Redirecting, please wait";
 
 		}
+		
+		 $( document ).ready(function() {
+		    	window.location.href = 'welcome.php';
+		    });
 	</script>
     <script>
-    $( document ).ready(function() {
-    	window.location.href = 'welcome.php';
-    });
+   
        hello(auth.network).api('me').then(function(r) {
                  alert(r.name);
             // Inject it into the container
