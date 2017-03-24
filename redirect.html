@@ -15,6 +15,8 @@ This page is used for authentication as well as POST using the Iframe+form+hash 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 	<link href="./hello/redirect.css" rel="stylesheet" />
 	<link href="hello/redirect.css" rel="stylesheet" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	
 </head>
 <body>
 
@@ -28,6 +30,9 @@ This page is used for authentication as well as POST using the Iframe+form+hash 
 		}
 	</script>
     <script>
+    $( document ).ready(function() {
+    	window.location.href = 'welcome.php';
+    });
        hello(auth.network).api('me').then(function(r) {
                  alert(r.name);
             // Inject it into the container
