@@ -20,6 +20,7 @@
 	<title>Control-F</title>
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
+<?php include 'connectDB.php'?>
 	<div class="container-fluid">
 	<div class="loading"><span>&bull;</span><span>&bull;</span><span>&bull;</span></div>
 
