@@ -53,8 +53,16 @@
 <script src="./hello/hello.js"></script>
 <script src="hello/hello.polyfill.js"></script>
 <script src="hello/hello.js"></script>
-<script>
+   <script>
+        hello.init({
+           linkedin: "86eqyv837hjh0w"
+        },{
+            scope: 'email',
+            redirect_uri: 'redirect.html'
+          });
+      </script>
 
+<script>
 var userName= "";
 var userEmail ="";
 
