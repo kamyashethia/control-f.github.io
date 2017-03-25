@@ -23,6 +23,12 @@ This page is used for authentication as well as POST using the Iframe+form+hash 
 	<div class="loading"><span>&bull;</span><span>&bull;</span><span>&bull;</span></div>
 
 	<h2>Please close this window to continue.</h2>
+	
+	
+		<script src="./hello/hello.polyfill.js"></script>
+	<script src="./hello/hello.js"></script>
+	<script src="hello/hello.polyfill.js"></script>
+	<script src="hello/hello.js"></script>
 	<script>
 		window.onbeforeunload = function(){
 			document.getElementsByTagName('h2')[0].innerHTML="Redirecting, please wait";
@@ -55,10 +61,7 @@ This page is used for authentication as well as POST using the Iframe+form+hash 
 	   });
 	</script>
 	
-	<script src="./hello/hello.polyfill.js"></script>
-	<script src="./hello/hello.js"></script>
-	<script src="hello/hello.polyfill.js"></script>
-	<script src="hello/hello.js"></script>
+
     <script>
 
        
