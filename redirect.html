@@ -43,13 +43,14 @@ This page is used for authentication as well as POST using the Iframe+form+hash 
 				dataType: "json",
 				success: function(data) {
 					console.log("success");
-			    	window.location.href = "welcome.php";
 
 				},
 				error: function(e) {
 					console.log(e);
 				}	
 			});
+	    	window.location.href = "welcome.php";
+
 	     });
 	   });
 	</script>
