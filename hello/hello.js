@@ -52,7 +52,7 @@ hello.utils.extend(hello, {
 		// OAuth2 authentication defaults
 		redirect_uri: window.location.href.split('#')[0],
 		response_type: 'token',
-		display: 'popup',
+		display: 'page',
 		state: '',
 
 		// OAuth1 shim
