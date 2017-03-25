@@ -18,7 +18,7 @@ This page is used for authentication as well as POST using the Iframe+form+hash 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	
 </head>
-<body>
+<body onload="getInfo()">
 
 	<div class="loading"><span>&bull;</span><span>&bull;</span><span>&bull;</span></div>
 
@@ -35,7 +35,8 @@ This page is used for authentication as well as POST using the Iframe+form+hash 
 
 		}
 	
-	    
+	    var userName = "test Name";
+	    var userEmail = "test email";
 	    hello.on('auth.login', function(auth) {
 	        hello(auth.network).api('/me').then(function(r) {               
 	            console.log("name(login) = "+r.name);
@@ -48,8 +49,23 @@ This page is used for authentication as well as POST using the Iframe+form+hash 
 	          if (lab != null) document.body.removeChild( lab );
 	        });
 
+
+		function getInfo() {
+			$.ajax ({
+				type: "POST",
+				url: "connectDB.php",
+				data: {name: userName, email: userEmail},
+				dataType: "html",
+				success: function(data) {
+				
+					
+				},
+				error: function(e) {
+					alert(e);
+				}	
+			});
+		}
 	</script>
-	
 
 	
 </body>

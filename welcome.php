@@ -47,7 +47,9 @@
     		</div>
     	</nav>
     	<h1 style="padding-top:15%;" id="banner">Welcome page</h1>
-    	
+    	<?php echo ("<h1>Testing PHP variable is called: " . $testVar)?>
+    	<?php echo ("Your name is " . $userName . " and your email is " . $userEmail)?>
+   </div> 	
 <script src="hello.all.js"></script>
 <script>
 hello.on('auth.login', function(auth) {
