@@ -46,45 +46,8 @@
       			</div>
     		</div>
     	</nav>
-    	<h1 style="padding-top:15%;" id="banner"></h1>
+    	<h1 style="padding-top:15%;" id="banner">Welcome page</h1>
+		<?php echo ("<h1>Your name is " . $USER_NAME . " and your email is " . $USER_EMAIL ."!")?>
 
-<script src="hello.all.js"></script>
-<script src="./hello/hello.polyfill.js"></script>
-<script src="./hello/hello.js"></script>
-<script src="hello/hello.polyfill.js"></script>
-<script src="hello/hello.js"></script>
-   <script>
-        hello.init({
-           linkedin: "86eqyv837hjh0w"
-        },{
-            scope: 'email',
-            redirect_uri: 'redirect.html'
-          });
-      </script>
-
-<script>
-var userName= "";
-var userEmail ="";
-
-
-	hello.on('auth.login', function(auth) {
-		// Call user information, for the given network
-		hello(auth.network).api('me').then(function(r) {
-			// Inject it into the container
-			var label = document.getElementById('profile_' + auth.network);
-			if (!label) {
-				label = document.createElement('div');
-				label.id = 'profile_' + auth.network;
-				document.getElementById('profile').appendChild(label);
-			}
-			label.innerHTML = '<img src="' + r.thumbnail + '" /> Hey ' + r.name;
-		});
-	});
-	
-	var banner = document.getElementById("banner");
-	banner.innerHTML = "Hi " + userName + "! Your email is " + userEmail + ".";
-</script>
-    
-	
 </body>
 </html>

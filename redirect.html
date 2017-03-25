@@ -29,8 +29,29 @@ This page is used for authentication as well as POST using the Iframe+form+hash 
 
 		}
 	    $( document ).ready(function() {
-	    	window.location.href = "welcome.php";
-	    });
+	    	var userName = "";
+	    	var userEmail = "";
+	    	hello(auth.network).api('me').then(function(r) {
+                alert(r.name);
+                userName = r.name;
+                userEmail = r.email;
+
+	    	$.ajax ({
+				type: "POST",
+				url: "connectDB.php",
+				data: {name: userName , email: userEmail },
+				dataType: "json",
+				success: function(data) {
+					console.log("success");
+			    	window.location.href = "welcome.php";
+
+				},
+				error: function(e) {
+					console.log(e);
+				}	
+			});
+	     });
+	   });
 	</script>
 	
 	<script src="./hello/hello.polyfill.js"></script>
@@ -38,20 +59,8 @@ This page is used for authentication as well as POST using the Iframe+form+hash 
 	<script src="hello/hello.polyfill.js"></script>
 	<script src="hello/hello.js"></script>
     <script>
-    hello.on( "auth.login", dump_login);
 
-       hello(auth.network).api('me').then(function(r) {
-                 alert(r.name);
-            // Inject it into the container
-            var label = document.getElementById('profile_' + auth.network);
-            if (!label) {
-                label = document.createElement('div');
-                label.id = 'profile_' + auth.network;
-                document.getElementById('profile').appendChild(label);
-            }
-            label.innerHTML = '<img src="' + r.thumbnail + '" /> Hey ' + r.name;
-        });
-
+       
         hello.on('auth.logout', function () {
           var lab = document.getElementById("pic_and_greet");
           if (lab != null) document.body.removeChild( lab );
