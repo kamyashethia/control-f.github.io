@@ -34,28 +34,7 @@ This page is used for authentication as well as POST using the Iframe+form+hash 
 			document.getElementsByTagName('h2')[0].innerHTML="Redirecting, please wait";
 
 		}
-	    $( document ).ready(function() {
-	    	var userName = "";
-	    	var userEmail = "";
-	    	
-
-	    	/*$.ajax ({
-				type: "POST",
-				url: "connectDB.php",
-				data: {name: userName , email: userEmail },
-				dataType: "json",
-				success: function(data) {
-					console.log("success");
-
-				},
-				error: function(e) {
-					console.log(e);
-				}	
-			});
-	    	window.location.href = "welcome.php";*/
-
-	    
-	   });
+	
 	    
 	    hello.on('auth.login', function(auth) {
 	        hello(auth.network).api('/me').then(function(r) {               

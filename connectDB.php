@@ -18,13 +18,5 @@ if ( ! mysqli_select_db($conn, "mydbinstance") ) {
 #	exit(1);
 #
 
-if (isset($_POST['email'])) {
-	$USER_EMAIL = $_POST['email'];	
-} 
-
-if (isset($_POST['name'])) {
-	$USER_NAME = $_POST['name'];
-}
-
 
 ?>

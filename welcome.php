@@ -47,7 +47,17 @@
     		</div>
     	</nav>
     	<h1 style="padding-top:15%;" id="banner">Welcome page</h1>
-		<?php echo ("<h1>Your name is " . $USER_NAME . " and your email is " . $USER_EMAIL ."!")?>
-
+    	
+<script src="hello.all.js"></script>
+<script>
+hello.on('auth.login', function(auth) {
+    hello(auth.network).api('/me').then(function(r) {               
+        console.log("name(login) = "+r.name);
+        console.log("email(login) = " + r.email);
+        var banner = document.getElementById('banner');
+        banner.innerHTML = "Hello " + r.name + "! Your email is " + r.email + ".";
+    });
+});
+</script>
 </body>
 </html>
