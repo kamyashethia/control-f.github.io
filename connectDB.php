@@ -17,13 +17,5 @@ if ( ! mysqli_select_db($conn, "mydbinstance") ) {
 #	echo("Error: %s\n"+ mysqli_error($conn));
 #	exit(1);
 #
-if (isset($_POST['name'])) {
-	$USER_NAME = $_POST['name'];
 
-}
-if (isset($_POST['email'])) {
-	$USER_EMAIL = $_POST['email'];
-
-}
-$testVAR = "testing variable";
 ?>

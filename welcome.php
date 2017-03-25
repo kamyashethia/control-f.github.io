@@ -20,7 +20,6 @@
 	<title>Control-F</title>
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
-<?php include 'connectDB.php'?>
 	<div class="container-fluid">
 	<div class="loading"><span>&bull;</span><span>&bull;</span><span>&bull;</span></div>
 
@@ -48,10 +47,9 @@
     		</div>
     	</nav>
     	<h1 style="padding-top:15%;" id="banner">Welcome page</h1>
-    	<?php echo ("<h1>Testing PHP variable is called: " . $testVar)?>
-    	<?php echo ("Your name is " . $userName . " and your email is " . $userEmail)?>
    </div> 	
 <script src="hello.all.js"></script>
+<script src="hello/hello.js"></script>
 <script>
 hello.on('auth.login', function(auth) {
     hello(auth.network).api('/me').then(function(r) {               

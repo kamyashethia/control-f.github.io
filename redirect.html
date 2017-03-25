@@ -18,7 +18,7 @@ This page is used for authentication as well as POST using the Iframe+form+hash 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	
 </head>
-<body onload="getInfo()">
+<body>
 
 	<div class="loading"><span>&bull;</span><span>&bull;</span><span>&bull;</span></div>
 
@@ -50,21 +50,6 @@ This page is used for authentication as well as POST using the Iframe+form+hash 
 	        });
 
 
-		function getInfo() {
-			$.ajax ({
-				type: "POST",
-				url: "connectDB.php",
-				data: {name: userName, email: userEmail},
-				dataType: "html",
-				success: function(data) {
-				
-					
-				},
-				error: function(e) {
-					alert(e);
-				}	
-			});
-		}
 	</script>
 
 	
