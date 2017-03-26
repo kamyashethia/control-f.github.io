@@ -60,24 +60,10 @@ $( document ).ready(function() {
             console.log("email(login) = " + r.email);
         });
     });
+    hello.on("auth.failed", function(){console.log(arguments);});
+    
 });
 </script>
-<script class="pre">
-        hello.init({
-           github: "ffe1c437297f06e9e275"
-        },{
-            scope: 'email',
-            redirect_uri: 'redirect.html'
-          });
-      </script>
 
-        <script>
-        hello.init({
-           linkedin: "86eqyv837hjh0w"
-        },{
-            scope: 'email',
-            redirect_uri: 'redirect.html'
-          });
-      </script>
 </body>
 </html>
