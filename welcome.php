@@ -54,9 +54,19 @@ $( document ).ready(function() {
 	
     console.log( "ready!" );
     var linkedin = hello('linkedin').getAuthResponse();
-    console.log(linkedin.access_token);
-    console.log(linkedin.expires);
-    
+    console.log("token:" + linkedin.access_token);
+    console.log("expires: " + linkedin.expires);
+    hello('linkedin').login({display: 'page'},
+    	    function() {
+    	        hello('linkedin').api("me")
+    	                .then(function(userDetails) {
+    	                    console.log("hello api success");
+    	                    console.log(userDetails);
+    	                }, function(e) {
+    	                    console.log(e);
+    	                });
+    	    });
+    	    
     hello.on('auth.login', function(auth) {
         hello(auth.network).api('/me').then(function(r) {   
             console.log(auth.network);            
@@ -64,16 +74,7 @@ $( document ).ready(function() {
             console.log("email(login) = " + r.email);
         });
     });
-    hello.on("auth.failed", function(){console.log(arguments);});
-    hello('linkedin').api('me').then(function(json){
-
-    	  alert('Your name is '+ json.name)
-
-    	}, function(e){
-
-    	  alert('Whoops! ' + e.error.message )
-
-    	})
+   
 });
 </script>
 
