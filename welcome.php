@@ -56,7 +56,6 @@ if (strcmp($_SESSION['profileType'], "dev") == 0) {		#user is a DEVELOPER
 
 }
 #rejoice
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
