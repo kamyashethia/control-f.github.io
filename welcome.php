@@ -54,11 +54,10 @@
 $( document ).ready(function() {
     console.log( "ready!" );
     hello.on('auth.login', function(auth) {
-        hello(auth.network).api('/me').then(function(r) {               
+        hello(auth.network).api('/me').then(function(r) {   
+            console.log(auth.network);            
             console.log("name(login) = "+r.name);
             console.log("email(login) = " + r.email);
-            var banner = document.getElementById('banner');
-            banner.innerHTML = "Hello " + r.name + "! Your email is " + r.email + ".";
         });
     });
 });
