@@ -52,7 +52,10 @@
 <script src="hello/hello.js"></script>
 <script>
 $( document ).ready(function() {
+	
     console.log( "ready!" );
+    console.log( r.name);
+    
     hello.on('auth.login', function(auth) {
         hello(auth.network).api('/me').then(function(r) {   
             console.log(auth.network);            
