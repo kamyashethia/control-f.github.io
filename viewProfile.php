@@ -48,7 +48,7 @@
     		</div>
     	</nav>
     	<!--- for the profile backimage -->
-	
+	<?php echo $_SESSION['ID']?>
 		<div class = "container-fluid" id = "top-background">
 			<div id = "title-text">
 			<?php #query to get user information#
