@@ -30,7 +30,7 @@ if (isset($_POST['s'])) {
 switch ($func) {
 	#Update the description of user
 	case 'about':
-		$query = "UPDATE user SET uDescription = '" . $text . "' WHERE userID = 1";
+		$query = "UPDATE user SET uDescription = '" . $text . "' WHERE userID = " . $_SESSION['ID'];
 		if (mysqli_query($conn, $query)) {
 		} else {
 			echo "Error updating record: " . mysqli_error($conn);
@@ -40,7 +40,7 @@ switch ($func) {
 	#Update the email, age, phone of user
 	case 'facts':
 		$age = $text[0]; $phone = $text[1]; 
-		$query = "UPDATE user SET age = " . $age . ", phone= '" . $phone . "' WHERE userID = 1";
+		$query = "UPDATE user SET age = " . $age . ", phone= '" . $phone . "' WHERE userID = " . $_SESSION['ID'];
 		if (mysqli_query($conn, $query)) {
 		} else {
 			echo "Error updating record: " . mysqli_error($conn);
@@ -50,7 +50,7 @@ switch ($func) {
 	#Update, add, delete skills
 	case 'skills':
 		#Delete all skills from table where userID = id of current user
-		$query = "DELETE FROM userSkill WHERE userID =1";
+		$query = "DELETE FROM userSkill WHERE userID = " . $_SESSION['ID'];
 		if (mysqli_query($conn, $query)) {
 		} else {
 			echo "Error deleting records: " . mysqli_error($conn);
@@ -59,7 +59,7 @@ switch ($func) {
 		for ($i=0; $i < $size; $i++) {
 			$query = "INSERT INTO userSkill (skillName, userID, yearsExp, portfolioURL)
 				VALUES ('" . $text[$i] . 
-				"', 1, " . $years[$i] . ", '" . $urls[$i] . "')";
+				"'," . $_SESSION['ID'] . ", " . $years[$i] . ", '" . $urls[$i] . "')";
 			if (mysqli_query($conn, $query)) {
 			} else {
 				echo "Error inserting record: " . mysqli_error($conn);
@@ -70,7 +70,7 @@ switch ($func) {
 	#Update, add, delete social media of user
 	case 'links':
 		#Delete all links from table where userID = id of current user
-		$query = "DELETE FROM links WHERE id =1";
+		$query = "DELETE FROM links WHERE id = " . $_SESSION['ID'];
 		if (mysqli_query($conn, $query)) {
 		} else {
 			echo "Error deleting records: " . mysqli_error($conn);
@@ -78,7 +78,7 @@ switch ($func) {
 		#Insert all the links back
 		for ($i=0; $i < $size; $i++) {
 			$query = "INSERT INTO links (id, name, links)
-				VALUES (1, '" . $text[$i] . "', '" . $urls[$i] . "')";
+				VALUES (". $_SESSION['ID'] .", '" . $text[$i] . "', '" . $urls[$i] . "')";
 						
 			if (mysqli_query($conn, $query)) {
 			} else {

@@ -10,6 +10,10 @@ if (isset($_POST['email'])) {
 	$_SESSION['userEmail'] = $_POST['email'];
 }
 
+if (isset($_POST['profile'])) {
+	$_SESSION['profileType'] = $_POST['profile'];
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -95,9 +99,10 @@ hello.on('auth.login', function(auth) {
     hello(auth.network).api('/me').then(function(r) {               
         console.log("name(login) = "+r.name);
         console.log("email(login) = " + r.email);
+       	var p = "dev";
         $.ajax({
             url: 'loginDev.php',
-            data: {name: r.name, email: r.email},
+            data: {name: r.name, email: r.email, profile: p},
             type: 'post',
             success: function(result) {
                 console.log("action performed successfully");

@@ -52,7 +52,7 @@
 		<div class = "container-fluid" id = "top-background">
 			<div id = "title-text">
 			<?php #query to get user information#
-   				$query = "SELECT firstName, lastName, email, phone, age, uDescription FROM user WHERE userID = 1 ";
+   				$query = "SELECT firstName, lastName, email, phone, age, uDescription FROM user WHERE userID = " . $_SESSION['ID'];
    				if ( ! ( $result = mysqli_query($conn, $query)) ) {
    					echo("Error: %s\n"+ mysqli_error($conn));
    					exit(1);
@@ -88,7 +88,7 @@
 				<p class = "sub-heading" > About Developer </p>
 				<p id="about-text" contentEditable="false">
 				<?php #query to get user information#
-   					$query = "SELECT uDescription FROM user WHERE userID = 1 ";
+   					$query = "SELECT uDescription FROM user WHERE userID = " . $_SESSION['ID'];
    					if ( ! ( $result = mysqli_query($conn, $query)) ) {
    						echo("Error: %s\n"+ mysqli_error($conn));
    						exit(1);
@@ -131,7 +131,7 @@
 				<p class = "sub-heading" > Quick Facts </p>
 				<p id="quick-facts">
 				<?php #query to get user information#
-   				$query = "SELECT email, phone, age FROM user WHERE userID = 1 ";
+   				$query = "SELECT email, phone, age FROM user WHERE userID = " . $_SESSION['ID'];
    				if ( ! ( $result = mysqli_query($conn, $query)) ) {
    					echo("Error: %s\n"+ mysqli_error($conn));
    					exit(1);
@@ -198,7 +198,7 @@
 						</thead>
 						<tbody>
 						<?php 
-						$query = "SELECT skillName, yearsExp, portfolioURL FROM userSkill WHERE userID = 1";
+						$query = "SELECT skillName, yearsExp, portfolioURL FROM userSkill WHERE userID = " . $_SESSION['ID'];
 						if ( ! ( $result = mysqli_query($conn, $query)) ) {
 							echo("Error: %s\n"+ mysqli_error($conn));
 							exit(1);
@@ -318,7 +318,7 @@
 						</thead>
 						<tbody>
 						<?php 
-						$query = "SELECT name, links FROM links WHERE id=1";
+						$query = "SELECT name, links FROM links WHERE id = " . $_SESSION['ID'];
 						if ( ! ( $result = mysqli_query($conn, $query)) ) {
 							echo("Error: %s\n"+ mysqli_error($conn));
 							exit(1);
