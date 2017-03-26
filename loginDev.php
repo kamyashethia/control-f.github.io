@@ -7,7 +7,7 @@ if (isset($_POST['name'])) {
 
 
 if (isset($_POST['email'])) {
-	$_SESSION['userEmail'] = $_POST['userEmail'];
+	$_SESSION['userEmail'] = $_POST['email'];
 }
 
 ?>
