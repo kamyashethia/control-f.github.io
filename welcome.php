@@ -49,7 +49,6 @@
     	<h1 style="padding-top:15%;" id="banner">Welcome page</h1>
    </div> 	
 <script src="hello.all.js"></script>
-<script src="hello/hello.js"></script>
 <script>
 $( document ).ready(function() {
 	
@@ -66,7 +65,15 @@ $( document ).ready(function() {
         });
     });
     hello.on("auth.failed", function(){console.log(arguments);});
-    
+    hello('linkedin').api('me').then(function(json){
+
+    	  alert('Your name is '+ json.name)
+
+    	}, function(e){
+
+    	  alert('Whoops! ' + e.error.message )
+
+    	})
 });
 </script>
 
