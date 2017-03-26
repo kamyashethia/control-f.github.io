@@ -55,7 +55,8 @@ $( document ).ready(function() {
 	
     console.log( "ready!" );
     var linkedin = hello('linkedin').getAuthResponse();
-    console.log(linkedin);
+    console.log(linkedin.access_token);
+    console.log(linkedin.expires);
     
     hello.on('auth.login', function(auth) {
         hello(auth.network).api('/me').then(function(r) {   
