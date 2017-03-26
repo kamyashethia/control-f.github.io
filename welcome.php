@@ -54,7 +54,6 @@
 $( document ).ready(function() {
 	
     console.log( "ready!" );
-    console.log( r.name);
     var linkedin = hello('linkedin').getAuthResponse();
     console.log(linkedin);
     
