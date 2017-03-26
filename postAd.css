@@ -22,8 +22,8 @@ h1 {
 	font-family: Raleway;
 	font-size: 300%;
 	text-align: left;
-	padding-top: 6%;
-	padding-left: 4%;
+	padding-top: 8%;
+	padding-left: 3%;
 	font-weight: bold;
 }
 
@@ -31,6 +31,10 @@ p {
 	font-family: Raleway;
 	font-size: 250%;
 	text-align: center;
+}
+
+#result-table {
+	display: none;
 }
 
 label {
@@ -42,18 +46,26 @@ label {
 }
 
 #why {
-	width:50%;
+	width: 50%;
+}
+
+#preview {
+ margin-left: 40%;
 }
 
 input[type=text] {
     width: 90%;
-    padding: 12px 20px;
+    padding: 10px 20px;
     margin: 8px 0;
     box-sizing: border-box;
     margin-left: 3%;
 }
 
-input[type=submit] {
+a .action_box {
+	text-decoration: none;
+}
+
+button {
 	text-align: center;
 	background-color: #4ec996;
     border: none;
@@ -61,30 +73,15 @@ input[type=submit] {
     padding: 16px 32px;
     text-decoration: none;
     margin-top: 3%;
-    margin-left: 40%;
-    cursor: pointer
+    margin-left: 3%;
+    cursor: pointer;
 }
 
 
 @media screen and (max-width: 761px) {
 
-	.left {
-		padding-top: 7%;
-		padding-bottom: 0%;
-	}
-
-	.right {
-		margin-top: 0px;
-	}
-
-	.floating-box {
-		height: 70%;
-	}
-
-	.logos {
-		background-color: red;
-		text-align: center;
-		padding-left: 40%;
+	#submit {
+		margin-left: 40%;
 	}
 
 }
