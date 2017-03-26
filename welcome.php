@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,6 +48,7 @@
     		</div>
     	</nav>
     	<h1 style="padding-top:15%;" id="banner">Welcome page</h1>
+    	<?php echo("<h2>Hi " . $_SESSION['userName'] . "! Your email is " . $_SESSION['userEmail'] . "</h2>")?>
    </div> 	
 <script src="hello.all.js"></script>
 <script>

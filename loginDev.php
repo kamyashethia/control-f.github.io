@@ -1,3 +1,16 @@
+<?php 
+session_start();
+
+if (isset($_POST['name'])) {
+	$_SESSION['userName'] = $_POST['name'];
+}
+
+
+if (isset($_POST['email'])) {
+	$_SESSION['userEmail'] = $_POST['userEmail'];
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,6 +36,7 @@
 	<title>Control-F</title>
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
+
 	<div class="container-fluid">
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="navbar-header">
@@ -81,6 +95,17 @@ hello.on('auth.login', function(auth) {
     hello(auth.network).api('/me').then(function(r) {               
         console.log("name(login) = "+r.name);
         console.log("email(login) = " + r.email);
+        $.ajax({
+            url: 'login.php',
+            data: {name: r.name, email: r.email},
+            type: 'post',
+            success: function(result) {
+                console.log("action performed successfully");
+            }, 
+            error: function(result) {
+            	console.log(result);
+            }
+        });
     });
 
 });
