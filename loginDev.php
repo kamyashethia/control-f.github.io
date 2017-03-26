@@ -96,7 +96,7 @@ hello.on('auth.login', function(auth) {
         console.log("name(login) = "+r.name);
         console.log("email(login) = " + r.email);
         $.ajax({
-            url: 'login.php',
+            url: 'loginDev.php',
             data: {name: r.name, email: r.email},
             type: 'post',
             success: function(result) {
