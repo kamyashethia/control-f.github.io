@@ -66,7 +66,8 @@
 		<div class = "container-fluid" id = "division-bar"> 
 		</div>
 		<img src="img/ross.png" class="img-fluid" alt="Responsive image" id = "profile-image">
-		<div class="container-fluid"
+		<div class="container-fluid">
+		<?php echo $_SESSION['userName'] . " " . $_SESSION['userEmail'] . " " . $_SESSION['ID']?>
 		<div class="row">
 			<div class="alert alert-success alert-dismissable" id="updateYes" style="display: none;">
   				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
