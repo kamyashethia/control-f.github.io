@@ -1,4 +1,4 @@
-<?php session_start();?>
+<?php session_start();	?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -430,15 +430,14 @@
 			<option value='php'>PHP</option>\
 			<option value='swift'>Swift</option></select>";
 
-		var cell2String = "<select class='pickYear'></select>";
+		cell2.innerHTML = "<select class='pickYear'></select>";
 		for (var i = 1; i<=100; i++) {
 	        if (i==temp) {
-	        	cell2String += "<option value='"+i+"' selected>"+i+"</option>";
+	        	$(".pickSkill :empty").append("<option value='"+i+"' selected>"+i+"</option>");
 	        } else {   
-	        	cell2String += "<option value='"+i+"'>"+i+"</option>";
+	        	$(".pickSkill :empty").append("<option value='"+i+"'>"+i+"</option>");
 	        }
         }
-        cell2.innerHTML = cell2String;
 		cell3.innerHTML = "sample website";
 		cell4.innerHTML = "<span class='glyphicon glyphicon-remove' onclick='removeSkill(this)'></span>";
 	}
